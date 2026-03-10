@@ -1,0 +1,163 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="FlsAssDom_2">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Assistenza" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Trasmissione">
+								<xs:complexType>
+									<xs:attribute name="tipo" use="required"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Erogatore">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CodiceRegione"/>
+										<xs:element name="CodiceASL"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Eventi">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PresaInCarico">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Id_Rec"/>
+												</xs:sequence>
+												<xs:attribute name="data" use="required"/>												
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Rivalutazione" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Valutazione" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Patologia">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Prevalente"/>
+																			<xs:element name="Concomitante"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Autonomia" minOccurs="0"/>
+																<xs:element name="GradoMobilita" minOccurs="0"/>
+																<xs:element name="Disturbi">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Cognitivi"/>
+																			<xs:element name="Comportamentali"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="SupportoSociale"/>
+																<xs:element name="FragilitaFamiliare"/>
+																<xs:element name="RischioInfettivo"/>
+																<xs:element name="RischioSanguinamento"/>
+																<xs:element name="DrenaggioPosturale"/>
+																<xs:element name="OssigenoTerapia"/>
+																<xs:element name="Ventiloterapia"/>
+																<xs:element name="Tracheostomia"/>
+																<xs:element name="Alimentazione">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Assistita"/>
+																			<xs:element name="Enterale"/>
+																			<xs:element name="Parenterale"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="GestioneStomia"/>
+																<xs:element name="ElimiUrinariaIntestinale"/>
+																<xs:element name="AlterRitmoSonnoVeglia"/>
+																<xs:element name="IntEduTerapeutica"/>
+																<xs:element name="LesioniCute"/>
+																<xs:element name="CuraUlcereCutanee12Grado"/>
+																<xs:element name="CuraUlcereCutanee34Grado"/>
+																<xs:element name="PrelieviVenosiNonOcc"/>
+																<xs:element name="ECG"/>
+																<xs:element name="Telemetria"/>
+																<xs:element name="TerSottocutIntraMuscInfus"/>
+																<xs:element name="GestioneCatetere"/>
+																<xs:element name="Trasfusioni"/>
+																<xs:element name="ControlloDolore"/>
+																<xs:element name="CurePalliative" minOccurs="0"/>
+																<xs:element name="TrattamentiRiab">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Neurologico"/>
+																			<xs:element name="Motorio"/>
+																			<xs:element name="DiMantenimento"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="SupervisioneContinua"/>
+																<xs:element name="AssistenzaIADL"/>
+																<xs:element name="AssistenzaADL"/>
+																<xs:element name="SupportoCareGiver"/>
+																<xs:element name="ValutazioneUCPDOM" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="SegnoSintomoClinico"/>
+																			<xs:element name="UtilStrumentoIdentBisognoCP"/>
+																			<xs:element name="UtilStrumentoValMultid"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="data" use="required"/>
+												<xs:attribute name="motivo" use="required"/>
+												<xs:attribute name="confermaPrecedente" use="required"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Erogazione" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="TipoOperatore"/>
+													<xs:element name="Prestazioni" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="TipoPrestazione"/>
+																<xs:element name="numPrestazione" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="TipoAccesso" use="required"/>
+												<xs:attribute name="data" use="required"/>
+												<xs:attribute name="numAccessi" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Sospensione" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Motivazione"/>
+												</xs:sequence>
+												<xs:attribute name="dataInizio" use="required"/>
+												<xs:attribute name="dataFine" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Conclusione" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Motivazione"/>
+												</xs:sequence>
+												<xs:attribute name="dataAD" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

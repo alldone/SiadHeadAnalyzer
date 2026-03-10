@@ -1,0 +1,924 @@
+There is an Error on line 1 : cvc-length-valid: Value 'MNCFNC31M14F893J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MNCFNC31M14F893J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701MNCFNC31M14F893J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701MNCFNC31M14F893J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'STRGPP29S46F893S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'STRGPP29S46F893S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701STRGPP29S46F893S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701STRGPP29S46F893S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'VTRDNC48P15I853F' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'VTRDNC48P15I853F' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250710VTRDNC48P15I853F' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250710VTRDNC48P15I853F' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'ZNGSVR46E59L452U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'ZNGSVR46E59L452U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250711ZNGSVR46E59L452U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250711ZNGSVR46E59L452U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GLTNCL57M07G728M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GLTNCL57M07G728M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250716GLTNCL57M07G728M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250716GLTNCL57M07G728M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SCRPQL36B01F537B' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SCRPQL36B01F537B' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250724SCRPQL36B01F537B' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250724SCRPQL36B01F537B' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CGNLNS33B67M143G' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CGNLNS33B67M143G' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250808CGNLNS33B67M143G' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250808CGNLNS33B67M143G' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PRTCSR37P21F893U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PRTCSR37P21F893U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908PRTCSR37P21F893U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908PRTCSR37P21F893U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BRZFPP63H24B169H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BRZFPP63H24B169H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250915BRZFPP63H24B169H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250915BRZFPP63H24B169H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SRCMSS47M70A043A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SRCMSS47M70A043A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250917SRCMSS47M70A043A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250917SRCMSS47M70A043A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PLACML54P05F537N' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PLACML54P05F537N' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250919PLACML54P05F537N' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250919PLACML54P05F537N' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CSTMRS41C50M143P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CSTMRS41C50M143P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250923CSTMRS41C50M143P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250923CSTMRS41C50M143P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DFNFNC35A11I945P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DFNFNC35A11I945P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250923DFNFNC35A11I945P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250923DFNFNC35A11I945P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'TSSMCR38D41F843J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'TSSMCR38D41F843J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250925TSSMCR38D41F843J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250925TSSMCR38D41F843J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PPLSNT40T68F158A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PPLSNT40T68F158A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701PPLSNT40T68F158A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701PPLSNT40T68F158A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RAONTN37B42F893S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RAONTN37B42F893S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701RAONTN37B42F893S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701RAONTN37B42F893S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PTNBRN40E31F537T' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PTNBRN40E31F537T' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250709PTNBRN40E31F537T' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250709PTNBRN40E31F537T' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RCIDNC38T23F893C' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RCIDNC38T23F893C' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250709RCIDNC38T23F893C' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250709RCIDNC38T23F893C' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GNCSDR50M65F537H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GNCSDR50M65F537H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250710GNCSDR50M65F537H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250710GNCSDR50M65F537H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DPSNTN37S07H516X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DPSNTN37S07H516X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250722DPSNTN37S07H516X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250722DPSNTN37S07H516X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GMPGPP38B12D587M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GMPGPP38B12D587M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250723GMPGPP38B12D587M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250723GMPGPP38B12D587M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FCCNGL50E67F537M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FCCNGL50E67F537M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250731FCCNGL50E67F537M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250731FCCNGL50E67F537M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SCRMRA74C45F537T' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SCRMRA74C45F537T' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250807SCRMRA74C45F537T' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250807SCRMRA74C45F537T' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RNAGNR39B24H516Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RNAGNR39B24H516Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250812RNAGNR39B24H516Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250812RNAGNR39B24H516Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'NDRMRA39B68F607Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'NDRMRA39B68F607Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250813NDRMRA39B68F607Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250813NDRMRA39B68F607Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MRBGPP57E04H516D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MRBGPP57E04H516D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250826MRBGPP57E04H516D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250826MRBGPP57E04H516D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CMPCML64D66D587J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CMPCML64D66D587J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250828CMPCML64D66D587J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250828CMPCML64D66D587J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SNFCCT34P63E573S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SNFCCT34P63E573S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250828SNFCCT34P63E573S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250828SNFCCT34P63E573S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DNARFL47B15F537A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DNARFL47B15F537A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908DNARFL47B15F537A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908DNARFL47B15F537A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRPMNN21H61A043H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRPMNN21H61A043H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250912CRPMNN21H61A043H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250912CRPMNN21H61A043H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FRNNNT58C53F537W' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FRNNNT58C53F537W' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250912FRNNNT58C53F537W' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250912FRNNNT58C53F537W' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MZZRFL36M20G508X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MZZRFL36M20G508X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250916MZZRFL36M20G508X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250916MZZRFL36M20G508X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PGLPTR42E24D364L' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PGLPTR42E24D364L' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250917PGLPTR42E24D364L' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250917PGLPTR42E24D364L' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PNTMNT36L47H271I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PNTMNT36L47H271I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250925PNTMNT36L47H271I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250925PNTMNT36L47H271I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LMBGPP81H12F537R' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LMBGPP81H12F537R' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701LMBGPP81H12F537R' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701LMBGPP81H12F537R' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MSCNCL40H05E590G' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MSCNCL40H05E590G' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701MSCNCL40H05E590G' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701MSCNCL40H05E590G' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'TVLTRS38S46F537M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'TVLTRS38S46F537M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250702TVLTRS38S46F537M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250702TVLTRS38S46F537M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CGLMNT61M66F607C' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CGLMNT61M66F607C' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250711CGLMNT61M66F607C' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250711CGLMNT61M66F607C' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PTAMFR37A62H516X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PTAMFR37A62H516X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250730PTAMFR37A62H516X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250730PTAMFR37A62H516X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DMNCRN34P46H941X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DMNCRN34P46H941X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250731DMNCRN34P46H941X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250731DMNCRN34P46H941X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'NCLMGS51P59F537W' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'NCLMGS51P59F537W' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250801NCLMGS51P59F537W' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250801NCLMGS51P59F537W' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'NDRFNC37T01I744U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'NDRFNC37T01I744U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250801NDRFNC37T01I744U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250801NDRFNC37T01I744U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SRBSLL29H48E590N' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SRBSLL29H48E590N' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250827SRBSLL29H48E590N' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250827SRBSLL29H48E590N' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FRNNTN71C22G722U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FRNNTN71C22G722U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250915FRNNTN71C22G722U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250915FRNNTN71C22G722U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GLNNNT55T47D005M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GLNNNT55T47D005M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250702GLNNNT55T47D005M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250702GLNNNT55T47D005M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'TSSMST33L41F843K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'TSSMST33L41F843K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250702TSSMST33L41F843K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250702TSSMST33L41F843K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BRLPQL40L07B169H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BRLPQL40L07B169H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250704BRLPQL40L07B169H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250704BRLPQL40L07B169H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'VRTTRS28S55A386D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'VRTTRS28S55A386D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250710VRTTRS28S55A386D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250710VRTTRS28S55A386D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DLRNMR46B51G288C' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DLRNMR46B51G288C' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250714DLRNMR46B51G288C' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250714DLRNMR46B51G288C' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BRNFTN46E15D587S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BRNFTN46E15D587S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250723BRNFTN46E15D587S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250723BRNFTN46E15D587S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DNTSVT46E06G728I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DNTSVT46E06G728I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250812DNTSVT46E06G728I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250812DNTSVT46E06G728I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PNTLBT31E42I905Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PNTLBT31E42I905Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250918PNTLBT31E42I905Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250918PNTLBT31E42I905Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MRBMRA29B51F537I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MRBMRA29B51F537I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250926MRBMRA29B51F537I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250926MRBMRA29B51F537I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GRLMRA23R57G277Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GRLMRA23R57G277Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250929GRLMRA23R57G277Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250929GRLMRA23R57G277Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RGGTRS37P48F537W' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RGGTRS37P48F537W' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250724RGGTRS37P48F537W' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250724RGGTRS37P48F537W' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'VLLCCT48T62D589I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'VLLCCT48T62D589I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250730VLLCCT48T62D589I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250730VLLCCT48T62D589I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DNRRSN49B54A043K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DNRRSN49B54A043K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250731DNRRSN49B54A043K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250731DNRRSN49B54A043K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LCRRSR37D64E239Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LCRRSR37D64E239Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250731LCRRSR37D64E239Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250731LCRRSR37D64E239Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PPARFL36P24B197K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PPARFL36P24B197K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250731PPARFL36P24B197K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250731PPARFL36P24B197K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DNMNNA64M68H807U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DNMNNA64M68H807U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250812DNMNNA64M68H807U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250812DNMNNA64M68H807U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CLCNGL39D44G722W' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CLCNGL39D44G722W' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250821CLCNGL39D44G722W' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250821CLCNGL39D44G722W' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RGIRLM40S60G722U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RGIRLM40S60G722U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250821RGIRLM40S60G722U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250821RGIRLM40S60G722U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SRNVRN37E41D767F' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SRNVRN37E41D767F' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250827SRNVRN37E41D767F' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250827SRNVRN37E41D767F' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DNAFNC43M64F537B' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DNAFNC43M64F537B' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250829DNAFNC43M64F537B' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250829DNAFNC43M64F537B' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRSNTN47E19D587G' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRSNTN47E19D587G' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250901CRSNTN47E19D587G' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250901CRSNTN47E19D587G' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SCPGPP45A01C747S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SCPGPP45A01C747S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250905SCPGPP45A01C747S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250905SCPGPP45A01C747S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SDRMSS43H48I639I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SDRMSS43H48I639I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250905SDRMSS43H48I639I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250905SDRMSS43H48I639I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MNIGNN47C08F207A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MNIGNN47C08F207A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908MNIGNN47C08F207A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908MNIGNN47C08F207A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'VLLGZL64H65I639L' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'VLLGZL64H65I639L' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250909VLLGZL64H65I639L' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250909VLLGZL64H65I639L' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CPUMGS35T47H941E' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CPUMGS35T47H941E' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250912CPUMGS35T47H941E' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250912CPUMGS35T47H941E' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PRMVCN42E01I350O' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PRMVCN42E01I350O' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250912PRMVCN42E01I350O' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250912PRMVCN42E01I350O' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DCSRHL56D49H271G' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DCSRHL56D49H271G' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250917DCSRHL56D49H271G' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250917DCSRHL56D49H271G' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DVLMRP34P64D587H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DVLMRP34P64D587H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250919DVLMRP34P64D587H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250919DVLMRP34P64D587H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MSSMMM48B66H271R' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MSSMMM48B66H271R' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250703MSSMMM48B66H271R' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250703MSSMMM48B66H271R' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'TRMGLI55B59I905X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'TRMGLI55B59I905X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250703TRMGLI55B59I905X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250703TRMGLI55B59I905X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RTOCRN42H50I744D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RTOCRN42H50I744D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250708RTOCRN42H50I744D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250708RTOCRN42H50I744D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PGLLNE37H58F537L' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PGLLNE37H58F537L' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250730PGLLNE37H58F537L' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250730PGLLNE37H58F537L' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MTNNNZ51L66I945S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MTNNNZ51L66I945S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250801MTNNNZ51L66I945S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250801MTNNNZ51L66I945S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'NCCMCL39T47L452G' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'NCCMCL39T47L452G' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250801NCCMCL39T47L452G' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250801NCCMCL39T47L452G' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FMNLBT34D47I905A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FMNLBT34D47I905A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250811FMNLBT34D47I905A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250811FMNLBT34D47I905A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PRSGGR31B07F537D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PRSGGR31B07F537D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250811PRSGGR31B07F537D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250811PRSGGR31B07F537D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RGNNNZ36C64I639Q' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RGNNNZ36C64I639Q' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250812RGNNNZ36C64I639Q' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250812RGNNNZ36C64I639Q' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GSPMTT24A15H941H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GSPMTT24A15H941H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250828GSPMTT24A15H941H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250828GSPMTT24A15H941H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'TRPDNC29T46H271V' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'TRPDNC29T46H271V' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250829TRPDNC29T46H271V' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250829TRPDNC29T46H271V' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MNDGNC34T46H516Q' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MNDGNC34T46H516Q' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250901MNDGNC34T46H516Q' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250901MNDGNC34T46H516Q' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PTTMCN38S68F207P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PTTMCN38S68F207P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250904PTTMCN38S68F207P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250904PTTMCN38S68F207P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FRLMCR33R58E409O' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FRLMCR33R58E409O' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250905FRLMCR33R58E409O' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250905FRLMCR33R58E409O' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CLMLGU30T68F893K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CLMLGU30T68F893K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908CLMLGU30T68F893K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908CLMLGU30T68F893K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DVLGPP45B68H271K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DVLGPP45B68H271K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908DVLGPP45B68H271K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908DVLGPP45B68H271K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRNNLT69T46D988E' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRNNLT69T46D988E' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250909CRNNLT69T46D988E' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250909CRNNLT69T46D988E' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'TRPGGR44P30E590P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'TRPGGR44P30E590P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250909TRPGGR44P30E590P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250909TRPGGR44P30E590P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MLCMTR39C43I945Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MLCMTR39C43I945Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250910MLCMTR39C43I945Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250910MLCMTR39C43I945Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'VRDLMP42M61F207K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'VRDLMP42M61F207K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250919VRDLMP42M61F207K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250919VRDLMP42M61F207K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRBGLI82S58Z110U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRBGLI82S58Z110U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701CRBGLI82S58Z110U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701CRBGLI82S58Z110U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LMBMRA78A56F537Q' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LMBMRA78A56F537Q' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701LMBMRA78A56F537Q' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701LMBMRA78A56F537Q' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'VNGRCC62R30F207O' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'VNGRCC62R30F207O' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250702VNGRCC62R30F207O' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250702VNGRCC62R30F207O' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FRNRTI37R68F537S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FRNRTI37R68F537S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250723FRNRTI37R68F537S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250723FRNRTI37R68F537S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SLVGTT61P49D596A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SLVGTT61P49D596A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250723SLVGTT61P49D596A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250723SLVGTT61P49D596A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LGRRCN33R25F607T' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LGRRCN33R25F607T' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250725LGRRCN33R25F607T' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250725LGRRCN33R25F607T' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RDNGPP38A02B169A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RDNGPP38A02B169A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250725RDNGPP38A02B169A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250725RDNGPP38A02B169A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LTMGPP50P08F537I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LTMGPP50P08F537I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250729LTMGPP50P08F537I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250729LTMGPP50P08F537I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MNCNNT56A42F893B' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MNCNNT56A42F893B' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250818MNCNNT56A42F893B' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250818MNCNNT56A42F893B' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PTNGPP65P25F537M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PTNGPP65P25F537M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250825PTNGPP65P25F537M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250825PTNGPP65P25F537M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BRBMRA45E64F537J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BRBMRA45E64F537J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250827BRBMRA45E64F537J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250827BRBMRA45E64F537J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRDMRA38H64I639N' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRDMRA38H64I639N' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250828CRDMRA38H64I639N' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250828CRDMRA38H64I639N' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BSGTRS94A62F537X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BSGTRS94A62F537X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250829BSGTRS94A62F537X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250829BSGTRS94A62F537X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BDUDNC37S57Z404F' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BDUDNC37S57Z404F' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250901BDUDNC37S57Z404F' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250901BDUDNC37S57Z404F' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MGRGNN63L55M204H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MGRGNN63L55M204H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250903MGRGNN63L55M204H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250903MGRGNN63L55M204H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MZZRFL53B12H516J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MZZRFL53B12H516J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250915MZZRFL53B12H516J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250915MZZRFL53B12H516J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RNRGPP31R16D988G' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RNRGPP31R16D988G' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250915RNRGPP31R16D988G' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250915RNRGPP31R16D988G' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BLSGPP71L29G335R' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BLSGPP71L29G335R' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250930BLSGPP71L29G335R' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250930BLSGPP71L29G335R' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GLSDNC35B57E590U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GLSDNC35B57E590U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701GLSDNC35B57E590U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701GLSDNC35B57E590U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CLLGPP35S24I639W' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CLLGPP35S24I639W' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250711CLLGPP35S24I639W' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250711CLLGPP35S24I639W' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CMRFNC37D44H941O' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CMRFNC37D44H941O' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250716CMRFNC37D44H941O' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250716CMRFNC37D44H941O' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'NSAMRS42T67D364U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'NSAMRS42T67D364U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250716NSAMRS42T67D364U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250716NSAMRS42T67D364U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BTTMMM39T48I853L' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BTTMMM39T48I853L' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250730BTTMMM39T48I853L' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250730BTTMMM39T48I853L' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PGLFPP28S29H807X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PGLFPP28S29H807X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250730PGLFPP28S29H807X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250730PGLFPP28S29H807X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PRSGPP55M01D587D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PRSGPP55M01D587D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250902PRSGPP55M01D587D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250902PRSGPP55M01D587D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LTMFNC75E31F537K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LTMFNC75E31F537K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250917LTMFNC75E31F537K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250917LTMFNC75E31F537K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FZAMRS39A61F843F' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FZAMRS39A61F843F' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250918FZAMRS39A61F843F' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250918FZAMRS39A61F843F' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LMLDRD20H18F537K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LMLDRD20H18F537K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250926LMLDRD20H18F537K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250926LMLDRD20H18F537K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PRTMRS55P64F537Q' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PRTMRS55P64F537Q' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250926PRTMRS55P64F537Q' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250926PRTMRS55P64F537Q' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FLDMSB37P50F893P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FLDMSB37P50F893P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701FLDMSB37P50F893P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701FLDMSB37P50F893P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LRZCSM42S17I639C' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LRZCSM42S17I639C' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250710LRZCSM42S17I639C' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250710LRZCSM42S17I639C' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SCDSLL46L66L699U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SCDSLL46L66L699U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250710SCDSLL46L66L699U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250710SCDSLL46L66L699U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'VRNGRZ35L43H785C' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'VRNGRZ35L43H785C' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250710VRNGRZ35L43H785C' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250710VRNGRZ35L43H785C' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MZZMCR39L58F207P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MZZMCR39L58F207P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250716MZZMCR39L58F207P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250716MZZMCR39L58F207P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SRRCRN35S63B655B' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SRRCRN35S63B655B' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250722SRRCRN35S63B655B' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250722SRRCRN35S63B655B' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GLNGPP39B15I350R' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GLNGPP39B15I350R' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250724GLNGPP39B15I350R' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250724GLNGPP39B15I350R' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BRLFNC50A05A043J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BRLFNC50A05A043J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250725BRLFNC50A05A043J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250725BRLFNC50A05A043J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MSTNNA44E64D587F' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MSTNNA44E64D587F' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250729MSTNNA44E64D587F' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250729MSTNNA44E64D587F' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRTSRN33D04F537J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRTSRN33D04F537J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250903CRTSRN33D04F537J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250903CRTSRN33D04F537J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MZZTTL38R01G722H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MZZTTL38R01G722H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701MZZTTL38R01G722H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701MZZTTL38R01G722H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PPRSVR64M08F537J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PPRSVR64M08F537J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250702PPRSVR64M08F537J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250702PPRSVR64M08F537J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LCNMFR33T53H271T' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LCNMFR33T53H271T' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250703LCNMFR33T53H271T' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250703LCNMFR33T53H271T' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MLANTN44H54F843T' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MLANTN44H54F843T' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250715MLANTN44H54F843T' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250715MLANTN44H54F843T' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CSSGNN34C31M143M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CSSGNN34C31M143M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250723CSSGNN34C31M143M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250723CSSGNN34C31M143M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DBLCLT43P68D364Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DBLCLT43P68D364Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250725DBLCLT43P68D364Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250725DBLCLT43P68D364Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RMEMRS55M53H516V' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RMEMRS55M53H516V' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250807RMEMRS55M53H516V' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250807RMEMRS55M53H516V' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRCCST36B59D762A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRCCST36B59D762A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250821CRCCST36B59D762A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250821CRCCST36B59D762A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RSSCCT45A66F207X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RSSCCT45A66F207X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250827RSSCCT45A66F207X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250827RSSCCT45A66F207X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DGSMRA31B45D988R' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DGSMRA31B45D988R' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250828DGSMRA31B45D988R' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250828DGSMRA31B45D988R' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CLBGPP45E51H785J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CLBGPP45E51H785J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250902CLBGPP45E51H785J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250902CLBGPP45E51H785J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RSTMHL56M09H516S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RSTMHL56M09H516S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250903RSTMHL56M09H516S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250903RSTMHL56M09H516S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RSSSFO19D48C352L' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RSSSFO19D48C352L' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908RSSSFO19D48C352L' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908RSSSFO19D48C352L' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DLCNNN47P14L350P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DLCNNN47P14L350P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250924DLCNNN47P14L350P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250924DLCNNN47P14L350P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LNGTSN31M61E328K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LNGTSN31M61E328K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250925LNGTSN31M61E328K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250925LNGTSN31M61E328K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MRLRCC34D08G722A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MRLRCC34D08G722A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250709MRLRCC34D08G722A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250709MRLRCC34D08G722A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BTTSLL33M48H807E' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BTTSLL33M48H807E' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250711BTTSLL33M48H807E' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250711BTTSLL33M48H807E' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PGLMRN38M69E321P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PGLMRN38M69E321P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250711PGLMRN38M69E321P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250711PGLMRN38M69E321P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FRCSRN40H69F207Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FRCSRN40H69F207Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250714FRCSRN40H69F207Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250714FRCSRN40H69F207Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FGLDNC33A48F207F' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FGLDNC33A48F207F' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250725FGLDNC33A48F207F' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250725FGLDNC33A48F207F' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FVZCRN58L45F537E' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FVZCRN58L45F537E' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250725FVZCRN58L45F537E' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250725FVZCRN58L45F537E' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRDLRA64D70L452I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRDLRA64D70L452I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250730CRDLRA64D70L452I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250730CRDLRA64D70L452I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SGNVCN48A30E321I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SGNVCN48A30E321I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250730SGNVCN48A30E321I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250730SGNVCN48A30E321I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DLAMNT51A51F893A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DLAMNT51A51F893A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250804DLAMNT51A51F893A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250804DLAMNT51A51F893A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PSNNTN47E15B655Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PSNNTN47E15B655Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250808PSNNTN47E15B655Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250808PSNNTN47E15B655Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRSNTN47T26E389F' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRSNTN47T26E389F' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250819CRSNTN47T26E389F' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250819CRSNTN47T26E389F' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MNTCML47H25G722Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MNTCML47H25G722Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250828MNTCML47H25G722Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250828MNTCML47H25G722Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PRMFPP39M30F537H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PRMFPP39M30F537H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250828PRMFPP39M30F537H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250828PRMFPP39M30F537H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FRNCSM41M10D453A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FRNCSM41M10D453A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250829FRNCSM41M10D453A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250829FRNCSM41M10D453A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MRCMDM46A61E590Q' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MRCMDM46A61E590Q' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250902MRCMDM46A61E590Q' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250902MRCMDM46A61E590Q' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CMPNNA69E60F893D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CMPNNA69E60F893D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908CMPNNA69E60F893D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908CMPNNA69E60F893D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CVLPTR60M20D303Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CVLPTR60M20D303Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250909CVLPTR60M20D303Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250909CVLPTR60M20D303Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRRGRZ56M56F158Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRRGRZ56M56F158Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250911CRRGRZ56M56F158Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250911CRRGRZ56M56F158Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MNCRSR31T53F537Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MNCRSR31T53F537Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250924MNCRSR31T53F537Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250924MNCRSR31T53F537Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FZZMLE39B44F843P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FZZMLE39B44F843P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250703FZZMLE39B44F843P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250703FZZMLE39B44F843P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SLDCRN47H45D587O' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SLDCRN47H45D587O' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250710SLDCRN47H45D587O' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250710SLDCRN47H45D587O' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MSSSFN52E63C581W' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MSSSFN52E63C581W' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250722MSSSFN52E63C581W' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250722MSSSFN52E63C581W' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'TRPMNT49B43H271D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'TRPMNT49B43H271D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250722TRPMNT49B43H271D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250722TRPMNT49B43H271D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRCGNN33D15D587I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRCGNN33D15D587I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250728CRCGNN33D15D587I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250728CRCGNN33D15D587I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'VLLPQL30L55E590J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'VLLPQL30L55E590J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250728VLLPQL30L55E590J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250728VLLPQL30L55E590J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SRGNNZ35C66G722O' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SRGNNZ35C66G722O' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250730SRGNNZ35C66G722O' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250730SRGNNZ35C66G722O' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRRNCL50M20F207Q' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRRNCL50M20F207Q' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250814CRRNCL50M20F207Q' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250814CRRNCL50M20F207Q' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DRTCRN43B67F537E' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DRTCRN43B67F537E' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250825DRTCRN43B67F537E' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250825DRTCRN43B67F537E' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GLTTMS30R21I058P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GLTTMS30R21I058P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250827GLTTMS30R21I058P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250827GLTTMS30R21I058P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRLDNC33C71H224S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRLDNC33C71H224S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908CRLDNC33C71H224S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908CRLDNC33C71H224S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PNNSNT49A55H941G' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PNNSNT49A55H941G' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908PNNSNT49A55H941G' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908PNNSNT49A55H941G' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DLLLDA39B68F537P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DLLLDA39B68F537P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250912DLLLDA39B68F537P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250912DLLLDA39B68F537P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PSTMRA38E56G722Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PSTMRA38E56G722Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250917PSTMRA38E56G722Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250917PSTMRA38E56G722Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRTCRN42P67A552P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRTCRN42P67A552P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701CRTCRN42P67A552P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701CRTCRN42P67A552P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CLLMHL34M01I905B' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CLLMHL34M01I905B' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250707CLLMHL34M01I905B' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250707CLLMHL34M01I905B' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PTASVT32C19H516M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PTASVT32C19H516M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250708PTASVT32C19H516M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250708PTASVT32C19H516M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MSNMRS29D61D767I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MSNMRS29D61D767I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250709MSNMRS29D61D767I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250709MSNMRS29D61D767I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GLLNNZ40T54E321I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GLLNNZ40T54E321I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250717GLLNNZ40T54E321I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250717GLLNNZ40T54E321I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MTAGPP47B20I639Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MTAGPP47B20I639Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250722MTAGPP47B20I639Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250722MTAGPP47B20I639Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'NCCLRT57C43F537J' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'NCCLRT57C43F537J' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250801NCCLRT57C43F537J' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250801NCCLRT57C43F537J' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CMLLBT49S47F537K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CMLLBT49S47F537K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250804CMLLBT49S47F537K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250804CMLLBT49S47F537K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'SGNCST57A50E321H' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'SGNCST57A50E321H' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250807SGNCST57A50E321H' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250807SGNCST57A50E321H' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RMBGLM79M26L452D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RMBGLM79M26L452D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250825RMBGLM79M26L452D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250825RMBGLM79M26L452D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FGLNNN44A09F207B' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FGLNNN44A09F207B' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250828FGLNNN44A09F207B' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250828FGLNNN44A09F207B' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CHPCDD45E46F537D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CHPCDD45E46F537D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250903CHPCDD45E46F537D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250903CHPCDD45E46F537D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LBNGPP36R65F893Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LBNGPP36R65F893Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908LBNGPP36R65F893Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908LBNGPP36R65F893Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PSRMRS44C45F893M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PSRMRS44C45F893M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701PSRMRS44C45F893M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701PSRMRS44C45F893M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GRCLGU57D12F537Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GRCLGU57D12F537Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250707GRCLGU57D12F537Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250707GRCLGU57D12F537Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RMNTTV43H54L452L' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RMNTTV43H54L452L' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250707RMNTTV43H54L452L' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250707RMNTTV43H54L452L' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GRSFTN44S21H807Q' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GRSFTN44S21H807Q' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250711GRSFTN44S21H807Q' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250711GRSFTN44S21H807Q' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FRNNMR55B54F537M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FRNNMR55B54F537M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250716FRNNMR55B54F537M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250716FRNNMR55B54F537M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RZZCMN49M23L452I' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RZZCMN49M23L452I' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250721RZZCMN49M23L452I' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250721RZZCMN49M23L452I' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRSMHL43P47F537S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRSMHL43P47F537S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250729CRSMHL43P47F537S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250729CRSMHL43P47F537S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BRBFNC38M65C581P' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BRBFNC38M65C581P' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250731BRBFNC38M65C581P' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250731BRBFNC38M65C581P' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DVTMHL53E63H516A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DVTMHL53E63H516A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250901DVTMHL53E63H516A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250901DVTMHL53E63H516A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RSGSTG60A22Z131A' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RSGSTG60A22Z131A' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250901RSGSTG60A22Z131A' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250901RSGSTG60A22Z131A' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MRRSTN41D55G722X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MRRSTN41D55G722X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250924MRRSTN41D55G722X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250924MRRSTN41D55G722X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BRGNGL39L28F537U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BRGNGL39L28F537U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250926BRGNGL39L28F537U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250926BRGNGL39L28F537U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CMPFNC37A49E389X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CMPFNC37A49E389X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250702CMPFNC37A49E389X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250702CMPFNC37A49E389X' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LBLCRN41B43F537N' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LBLCRN41B43F537N' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250718LBLCRN41B43F537N' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250718LBLCRN41B43F537N' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CNDMRA65H48L452F' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CNDMRA65H48L452F' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250730CNDMRA65H48L452F' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250730CNDMRA65H48L452F' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'TSSMRS38S55B197Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'TSSMRS38S55B197Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250731TSSMRS38S55B197Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250731TSSMRS38S55B197Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GRLSVT36D09F207V' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GRLSVT36D09F207V' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250801GRLSVT36D09F207V' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250801GRLSVT36D09F207V' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CHRLNU87B65I854B' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CHRLNU87B65I854B' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250902CHRLNU87B65I854B' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250902CHRLNU87B65I854B' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'MRCVCN51H11D303Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'MRCVCN51H11D303Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250902MRCVCN51H11D303Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250902MRCVCN51H11D303Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'FRCNNA33R44D587K' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'FRCNNA33R44D587K' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250904FRCNNA33R44D587K' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250904FRCNNA33R44D587K' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GRRNNN30C10B169Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GRRNNN30C10B169Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250910GRRNNN30C10B169Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250910GRRNNN30C10B169Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PNTDNC39B13H271U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PNTDNC39B13H271U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250930PNTDNC39B13H271U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250930PNTDNC39B13H271U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'RZZDNC33H49M204D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'RZZDNC33H49M204D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250930RZZDNC33H49M204D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250930RZZDNC33H49M204D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CNGSNT48A66F893N' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CNGSNT48A66F893N' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250701CNGSNT48A66F893N' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250701CNGSNT48A66F893N' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BRRCLL34B13C814O' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BRRCLL34B13C814O' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250708BRRCLL34B13C814O' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250708BRRCLL34B13C814O' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PGLNLN31A69B169D' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PGLNLN31A69B169D' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250711PGLNLN31A69B169D' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250711PGLNLN31A69B169D' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DMCNGL45C42F537Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DMCNGL45C42F537Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250714DMCNGL45C42F537Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250714DMCNGL45C42F537Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PRTMNT38H64D589V' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PRTMNT38H64D589V' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250718PRTMNT38H64D589V' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250718PRTMNT38H64D589V' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BLNTRS38C54F537S' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BLNTRS38C54F537S' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250728BLNTRS38C54F537S' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250728BLNTRS38C54F537S' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'LPRNFR40T15I350Y' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'LPRNFR40T15I350Y' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250806LPRNFR40T15I350Y' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250806LPRNFR40T15I350Y' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BNOFNC38R12G728U' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BNOFNC38R12G728U' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250814BNOFNC38R12G728U' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250814BNOFNC38R12G728U' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'PRSGPP37P46D767F' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'PRSGPP37P46D767F' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250820PRSGPP37P46D767F' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250820PRSGPP37P46D767F' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DCSCML36A15H271V' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DCSCML36A15H271V' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250902DCSCML36A15H271V' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250902DCSCML36A15H271V' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'QLNCSM40D14F893Z' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'QLNCSM40D14F893Z' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250908QLNCSM40D14F893Z' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250908QLNCSM40D14F893Z' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'DCIDNC51E15D587B' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'DCIDNC51E15D587B' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250919DCIDNC51E15D587B' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250919DCIDNC51E15D587B' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'CRACML39T67F843M' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'CRACML39T67F843M' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250922CRACML39T67F843M' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250922CRACML39T67F843M' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'GRLMSL40R12F207R' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'GRLMSL40R12F207R' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250924GRLMSL40R12F207R' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250924GRLMSL40R12F207R' of element 'Id_Rec' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value 'BRGNGL49P48F537X' with length = '16' is not facet-valid with respect to length '88' for type 'CUNI'.
+There is an Error on line 1 : cvc-type.3.1.3: The value 'BRGNGL49P48F537X' of element 'CUNI' is not valid.
+There is an Error on line 1 : cvc-length-valid: Value '18020420250930BRGNGL49P48F537X' with length = '30' is not facet-valid with respect to length '88' for type 'Id_Rec'.
+There is an Error on line 1 : cvc-type.3.1.3: The value '18020420250930BRGNGL49P48F537X' of element 'Id_Rec' is not valid.
