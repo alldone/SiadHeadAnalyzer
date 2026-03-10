@@ -19,7 +19,7 @@ jobs:
             artifact_name: ReportSIAD-windows
             archive_cmd: powershell -Command "Compress-Archive -Path dist/ReportSIAD/* -DestinationPath dist/ReportSIAD-windows.zip"
             archive_path: dist/ReportSIAD-windows.zip
-          - os: macos-13
+          - os: macos-15-intel
             artifact_name: ReportSIAD-macos-intel
             archive_cmd: zip -r dist/ReportSIAD-macos-intel.zip dist/ReportSIAD
             archive_path: dist/ReportSIAD-macos-intel.zip

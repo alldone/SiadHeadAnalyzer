@@ -178,7 +178,7 @@ Workflow presente:
 
 Fa build su:
 
-- `macos-13` per macOS Intel
+- `macos-15-intel` per macOS Intel
 - `macos-latest` per macOS Apple Silicon
 - `windows-latest`
 

@@ -121,7 +121,7 @@ Il repository include la workflow:
 
 La workflow:
 
-- builda su `macos-13` per macOS Intel
+- builda su `macos-15-intel` per macOS Intel
 - builda su `macos-latest` per macOS Apple Silicon
 - builda su `windows-latest`
 - crea un archivio `.zip`
