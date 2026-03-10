@@ -178,7 +178,8 @@ Workflow presente:
 
 Fa build su:
 
-- `macos-latest`
+- `macos-13` per macOS Intel
+- `macos-latest` per macOS Apple Silicon
 - `windows-latest`
 
 Pubblica asset `.zip` su release quando viene pushato un tag `v*`.
@@ -206,7 +207,7 @@ git push origin v1.0.0
 Effetto:
 
 - GitHub Actions esegue la workflow `Build Release`
-- viene compilata l'app su `macos-latest` e `windows-latest`
+- viene compilata l'app su macOS Intel, macOS Apple Silicon e Windows
 - vengono generati gli artifact `.zip`
 - gli artifact vengono allegati alla release del tag
 

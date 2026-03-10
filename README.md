@@ -121,7 +121,8 @@ Il repository include la workflow:
 
 La workflow:
 
-- builda su `macos-latest`
+- builda su `macos-13` per macOS Intel
+- builda su `macos-latest` per macOS Apple Silicon
 - builda su `windows-latest`
 - crea un archivio `.zip`
 - pubblica gli asset nella release GitHub quando viene pushato un tag `v*`
