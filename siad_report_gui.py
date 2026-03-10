@@ -10,7 +10,7 @@ import threading
 import xml.etree.ElementTree as ET
 
 from openpyxl import Workbook
-from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 
 
 MONTH_CODES = {
@@ -72,6 +72,7 @@ class RecordDetail:
     anno_nascita_xml: int | None
     anno_nascita_usato: int | None
     eta_al_31_12: int | None
+    is_over_65: bool
     cf_ambiguo: bool
     included_in_report: bool
     note: str
@@ -290,6 +291,11 @@ def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list
 
     track2_late_candidates: list[dict] = []
 
+    def patient_age_and_flag(cf: str) -> tuple[int | None, bool]:
+        patient = patients[cf]
+        age = age_on_reference_date(cf, patient.resolved_year, reference_date) if patient.resolved_year else None
+        return age, bool(age is not None and age >= 65)
+
     for row in track1_rows:
         if row["presa_in_carico_date"].year == analysis_year:
             active_key = (1, row["sede"], row["id_rec"])
@@ -306,6 +312,7 @@ def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list
             included = False
             note = "Escluso: presa in carico tracciato 1 fuori anno di analisi."
         patient = patients[row["codice_fiscale"]]
+        age, is_over_65 = patient_age_and_flag(row["codice_fiscale"])
         details.append(
             RecordDetail(
                 sede=row["sede"],
@@ -317,7 +324,8 @@ def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list
                 codice_fiscale=row["codice_fiscale"],
                 anno_nascita_xml=row["anno_nascita"],
                 anno_nascita_usato=patient.resolved_year,
-                eta_al_31_12=age_on_reference_date(row["codice_fiscale"], patient.resolved_year, reference_date) if patient.resolved_year else None,
+                eta_al_31_12=age,
+                is_over_65=is_over_65,
                 cf_ambiguo=patient.ambiguous,
                 included_in_report=included,
                 note=note,
@@ -341,6 +349,7 @@ def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list
             included = False
             note = "Da valutare: presa in carico tracciato 2 nell'anno di analisi."
         patient = patients[row["codice_fiscale"]]
+        age, is_over_65 = patient_age_and_flag(row["codice_fiscale"])
         details.append(
             RecordDetail(
                 sede=row["sede"],
@@ -352,7 +361,8 @@ def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list
                 codice_fiscale=row["codice_fiscale"],
                 anno_nascita_xml=None,
                 anno_nascita_usato=patient.resolved_year,
-                eta_al_31_12=age_on_reference_date(row["codice_fiscale"], patient.resolved_year, reference_date) if patient.resolved_year else None,
+                eta_al_31_12=age,
+                is_over_65=is_over_65,
                 cf_ambiguo=patient.ambiguous,
                 included_in_report=included,
                 note=note,
@@ -404,6 +414,18 @@ def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list
 
     global_single_heads = len(cfs_to_sedi)
 
+    def cf_stats(cf_set: set[str]) -> tuple[int, int, int]:
+        over_65 = 0
+        ambiguous_count = 0
+        for cf in cf_set:
+            patient = patients[cf]
+            if patient.ambiguous:
+                ambiguous_count += 1
+            age, is_over_65 = patient_age_and_flag(cf)
+            if is_over_65:
+                over_65 += 1
+        return len(cf_set), over_65, ambiguous_count
+
     for sede in sedi:
         prev_rows = by_sede_track2_prev.get(sede, [])
         new_rows = by_sede_track1.get(sede, [])
@@ -412,16 +434,9 @@ def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list
         unique_patients = active_unique_cfs_by_sede[sede]
         shared_cfs = {cf for cf in unique_patients if len(cfs_to_sedi[cf]) > 1}
         exclusive_cfs = unique_patients - shared_cfs
-        over_65 = 0
-        ambiguous_count = 0
-        for cf in unique_patients:
-            patient = patients[cf]
-            if patient.ambiguous:
-                ambiguous_count += 1
-            elif patient.resolved_year is not None:
-                age = age_on_reference_date(cf, patient.resolved_year, reference_date)
-                if age is not None and age >= 65:
-                    over_65 += 1
+        total_unique_count, total_over_65, total_ambiguous = cf_stats(unique_patients)
+        exclusive_count, exclusive_over_65, exclusive_ambiguous = cf_stats(exclusive_cfs)
+        shared_count, shared_over_65, shared_ambiguous = cf_stats(shared_cfs)
         summary_rows.append(
             {
                 "SEDE": sede,
@@ -430,12 +445,15 @@ def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list
                 f"Prese in carico T2 {analysis_year} con CF non ancora presente": len(late_rows),
                 f"TOT. PRESE IN CARICO attive nel {analysis_year}": len(active_rows),
                 f"TOT. CF non univoci attivi nel {analysis_year}": len(active_rows),
-                f"TOT. PAZIENTI* attivi nel {analysis_year}": len(unique_patients),
-                "di cui CF condivisi con altre aziende": len(shared_cfs),
-                "di cui CF esclusivi azienda": len(exclusive_cfs),
-                "TOT. TESTE SINGOLE globali": "",
-                "di cui >= 65 anni": over_65,
-                "numero cf ambigui": ambiguous_count,
+                f"[CF per azienda] TOT. PAZIENTI* attivi nel {analysis_year}": total_unique_count,
+                "[CF per azienda] di cui >= 65 anni": total_over_65,
+                "[CF per azienda] numero cf ambigui": total_ambiguous,
+                "[Teste singole globali] CF esclusivi azienda": exclusive_count,
+                "[Teste singole globali] di cui >= 65 anni": exclusive_over_65,
+                "[Teste singole globali] numero cf ambigui": exclusive_ambiguous,
+                "[Differenze] CF condivisi con altre aziende": shared_count,
+                "[Differenze] di cui >= 65 anni": shared_over_65,
+                "[Differenze] numero cf ambigui": shared_ambiguous,
             }
         )
 
@@ -486,9 +504,6 @@ def add_total_row(summary_rows: list[dict], global_single_heads: int | None = No
     headers = list(summary_rows[0].keys())
     total_row: dict[str, object] = {headers[0]: "TOTALE"}
     for header in headers[1:]:
-        if header == "TOT. TESTE SINGOLE globali":
-            total_row[header] = global_single_heads if global_single_heads is not None else ""
-            continue
         total_row[header] = sum(int(row[header]) for row in summary_rows)
     return [*summary_rows, total_row]
 
@@ -506,6 +521,7 @@ def detail_headers() -> list[str]:
         "AnnoNascita XML",
         "Anno nascita usato",
         "Eta al 31/12",
+        "IsOver65",
         "CF ambiguo",
         "Incluso nel report",
         "Note",
@@ -525,6 +541,7 @@ def detail_to_row(detail: RecordDetail) -> list[object]:
         detail.anno_nascita_xml,
         detail.anno_nascita_usato,
         detail.eta_al_31_12,
+        "SI" if detail.is_over_65 else "NO",
         "SI" if detail.cf_ambiguo else "NO",
         "SI" if detail.included_in_report else "NO",
         detail.note,
@@ -544,6 +561,63 @@ ALT_FILL_EVEN = PatternFill(fill_type="solid", fgColor="EAF2F8")
 TOTAL_FILL = PatternFill(fill_type="solid", fgColor="D9EAD3")
 TOTAL_FONT = Font(bold=True, color="1F1F1F")
 CENTER_ALIGNMENT = Alignment(vertical="center")
+THICK_SIDE = Side(style="thick", color="1F1F1F")
+GROUP_FILLS = {
+    "attivita": PatternFill(fill_type="solid", fgColor="3D6D99"),
+    "cf_azienda": PatternFill(fill_type="solid", fgColor="2E8B57"),
+    "teste_globali": PatternFill(fill_type="solid", fgColor="8C6D1F"),
+    "differenze": PatternFill(fill_type="solid", fgColor="7A3E9D"),
+}
+
+
+def summary_column_groups(headers: list[str]) -> list[tuple[int, int, str]]:
+    groups: list[tuple[int, int, str]] = []
+    current_group = "attivita"
+    start = 1
+    for idx, header in enumerate(headers, start=1):
+        if header.startswith("[CF per azienda]"):
+            group = "cf_azienda"
+        elif header.startswith("[Teste singole globali]"):
+            group = "teste_globali"
+        elif header.startswith("[Differenze]"):
+            group = "differenze"
+        else:
+            group = "attivita"
+        if idx == 1:
+            current_group = group
+            start = idx
+            continue
+        if group != current_group:
+            groups.append((start, idx - 1, current_group))
+            start = idx
+            current_group = group
+    groups.append((start, len(headers), current_group))
+    return groups
+
+
+def apply_summary_group_style(ws) -> None:
+    headers = [cell.value for cell in ws[1]]
+    groups = summary_column_groups(headers)
+
+    for start_col, end_col, group_name in groups:
+        fill = GROUP_FILLS[group_name]
+        for col_idx in range(start_col, end_col + 1):
+            ws.cell(row=1, column=col_idx).fill = fill
+        for row_idx in range(1, ws.max_row + 1):
+            left_cell = ws.cell(row=row_idx, column=start_col)
+            right_cell = ws.cell(row=row_idx, column=end_col)
+            left_cell.border = Border(
+                left=THICK_SIDE,
+                right=left_cell.border.right,
+                top=left_cell.border.top,
+                bottom=left_cell.border.bottom,
+            )
+            right_cell.border = Border(
+                left=right_cell.border.left,
+                right=THICK_SIDE,
+                top=right_cell.border.top,
+                bottom=right_cell.border.bottom,
+            )
 
 
 def style_worksheet(ws, has_total_row: bool = False) -> None:
@@ -633,12 +707,15 @@ def save_workbook(
             "Prese in carico T2 ANNO con CF non ancora presente",
             "TOT. PRESE IN CARICO attive nel ANNO",
             "TOT. CF non univoci attivi nel ANNO",
-            "TOT. PAZIENTI* attivi nel ANNO",
-            "di cui CF condivisi con altre aziende",
-            "di cui CF esclusivi azienda",
-            "TOT. TESTE SINGOLE globali",
-            "di cui >= 65 anni",
-            "numero cf ambigui",
+            "[CF per azienda] TOT. PAZIENTI* attivi nel ANNO",
+            "[CF per azienda] di cui >= 65 anni",
+            "[CF per azienda] numero cf ambigui",
+            "[Teste singole globali] CF esclusivi azienda",
+            "[Teste singole globali] di cui >= 65 anni",
+            "[Teste singole globali] numero cf ambigui",
+            "[Differenze] CF condivisi con altre aziende",
+            "[Differenze] di cui >= 65 anni",
+            "[Differenze] numero cf ambigui",
         ]
 
     write_table_sheet(ws_summary, headers, [[row[h] for h in headers] for row in summary_with_total])
@@ -695,6 +772,7 @@ def save_workbook(
     write_table_sheet(ws_excluded_cf, excluded_headers, excluded_rows)
 
     style_worksheet(ws_summary, has_total_row=bool(summary_rows))
+    apply_summary_group_style(ws_summary)
     for ws in [*detail_sheets, ws_unique_cf, ws_excluded_cf]:
         style_worksheet(ws)
 

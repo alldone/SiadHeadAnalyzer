@@ -47,10 +47,14 @@ Applicazione Python con GUI cross-platform per:
 
 - `TOT. PRESE IN CARICO attive` = prese conteggiate secondo le regole sopra.
 - `TOT. CF non univoci attivi` = stesso numero delle prese conteggiate.
-- `TOT. PAZIENTI* attivi` = `CF` univoci per azienda.
-- `di cui CF condivisi con altre aziende` = `CF` univoci della stessa azienda presenti anche in altre aziende.
-- `di cui CF esclusivi azienda` = `CF` univoci presenti solo in quella azienda.
-- `TOT. TESTE SINGOLE globali` = numero reale di `CF` distinti attivi considerando insieme tutte le aziende; valorizzato sulla riga totale del riepilogo.
+- Il riepilogo dei `CF` e' organizzato in tre gruppi con lo stesso set di metriche:
+  totale, `>= 65 anni`, `cf ambigui`.
+- Gruppo `CF per azienda`
+  calcolato sui `CF` univoci per azienda.
+- Gruppo `Teste singole globali`
+  calcolato sui `CF` esclusivi azienda, cioe' non condivisi con altre aziende.
+- Gruppo `Differenze`
+  calcolato sui `CF` condivisi tra aziende.
 
 ## Gestione eta' e CF
 
@@ -75,12 +79,15 @@ Colonne attuali:
 - `Prese in carico T2 ANNO con CF non ancora presente`
 - `TOT. PRESE IN CARICO attive nel ANNO`
 - `TOT. CF non univoci attivi nel ANNO`
-- `TOT. PAZIENTI* attivi nel ANNO`
-- `di cui CF condivisi con altre aziende`
-- `di cui CF esclusivi azienda`
-- `TOT. TESTE SINGOLE globali`
-- `di cui >= 65 anni`
-- `numero cf ambigui`
+- `[CF per azienda] TOT. PAZIENTI* attivi nel ANNO`
+- `[CF per azienda] di cui >= 65 anni`
+- `[CF per azienda] numero cf ambigui`
+- `[Teste singole globali] CF esclusivi azienda`
+- `[Teste singole globali] di cui >= 65 anni`
+- `[Teste singole globali] numero cf ambigui`
+- `[Differenze] CF condivisi con altre aziende`
+- `[Differenze] di cui >= 65 anni`
+- `[Differenze] numero cf ambigui`
 
 ### Sheet `Dettaglio`
 
@@ -94,6 +101,7 @@ Una riga per ogni record letto, con:
 - `CF`;
 - anno nascita;
 - eta';
+- `IsOver65`;
 - flag `Incluso nel report`;
 - nota operativa.
 

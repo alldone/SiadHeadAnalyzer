@@ -10,15 +10,15 @@ Applicazione desktop Python per analizzare i flussi `SIAD` a partire dai due tra
 - estrae `CodiceASL`, `Id_Rec`, `AnnoNascita` e `Codice Fiscale`;
 - calcola eta' e ambiguita' dei `CF`;
 - applica regole di conteggio per azienda;
-- evidenzia i `CF` condivisi tra aziende e il totale delle teste singole globali;
+- evidenzia i `CF` condivisi tra aziende e separa le statistiche in blocchi coerenti;
 - genera un report Excel multi-sheet;
 - mostra in GUI sia l'elenco dei file letti sia il riepilogo aggregato.
 
 ## Punti chiave
 
 - Unicita' del `CF` calcolata per azienda `CodiceASL`
-- Evidenza dei `CF` condivisi tra aziende
-- Contatore finale delle teste singole globali
+- Riepilogo organizzato in tre gruppi di statistiche:
+  `CF per azienda`, `Teste singole globali`, `Differenze`
 - Gestione dei `CF` ambigui con supporto a `AnnoNascita`
 - Evidenza separata delle prese in carico da `tracciato 2` nell'anno
 - Foglio dedicato ai `CF` univoci per azienda
@@ -32,7 +32,7 @@ Il file Excel contiene:
 - `Report`
   riepilogo per azienda con totali finali
 - `Dettaglio`
-  tutte le righe lette, con motivazione di inclusione o esclusione
+  tutte le righe lette, con motivazione di inclusione o esclusione e flag `IsOver65`
 - `Dettaglio_<ASL>`
   un foglio per ogni azienda
 - `CF_Univoci`
@@ -66,7 +66,8 @@ La finestra include due tab:
 - `Tracciato 2` con data nell'anno
   conteggiato in colonna separata solo se il `CF` non e' gia' presente tra i `CF` univoci conteggiati per la stessa azienda
 - Deduplica prese in carico per `Tracciato + CodiceASL + Id_Rec`
-- Nel riepilogo vengono indicati anche i `CF` condivisi con altre aziende e, sulla riga totale, il numero di teste singole globali
+- Nel riepilogo le statistiche dei `CF` sono presentate in tre gruppi con lo stesso set di metriche:
+  totale, `>= 65 anni`, `cf ambigui`
 
 ## Avvio locale
 
@@ -156,4 +157,4 @@ git push origin v1.0.0
 
 ## Licenza
 
-Questo progetto e' distribuito sotto licenza MIT. Vedi [LICENSE](/Users/aldo/Desktop/PROGETTI/gisella/siad/rework/LICENSE).
+Questo progetto e' distribuito sotto licenza MIT. Vedi [LICENSE](/Users/aldo/Desktop/PROGETTI/python/SiadHeadAnalyzer/LICENSE).
