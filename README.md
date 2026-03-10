@@ -1,3 +1,4 @@
+--------------------
 # Report SIAD
 
 Applicazione desktop Python per analizzare i flussi `SIAD` a partire dai due tracciati XML/XSD, costruire riepiloghi per azienda e produrre un report Excel strutturato, leggibile e pronto per la verifica operativa.
