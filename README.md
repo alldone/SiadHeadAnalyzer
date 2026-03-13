@@ -12,7 +12,8 @@ Applicazione desktop Python per analizzare i flussi `SIAD` a partire dai due tra
 - applica regole di conteggio per azienda;
 - evidenzia i `CF` condivisi tra aziende e separa le statistiche in blocchi coerenti;
 - genera un report Excel multi-sheet;
-- mostra in GUI sia l'elenco dei file letti sia il riepilogo aggregato.
+- mostra in GUI sia l'elenco dei file letti sia il riepilogo aggregato;
+- consente di validare un XML selezionato rispetto allo XSD del relativo tracciato.
 
 ## Punti chiave
 
@@ -50,12 +51,19 @@ La GUI consente di selezionare:
 - file Excel di output
 - anno di analisi
 
-La finestra include due tab:
+La finestra include tre tab:
 
 - `File XML`
   elenco dei file intercettati
 - `Riepilogo`
   vista tabellare del summary prodotto
+- `Validazione`
+  elenco degli errori XSD dell'XML selezionato
+
+Quando si clicca su un file nella tab `File XML`, l'app propone la validazione con lo `XSD` del tracciato corrispondente:
+
+- se il file e' conforme, mostra un messaggio di esito positivo;
+- se il file non e' conforme, mostra un messaggio di errore e popola la tab `Validazione` con il dettaglio.
 
 ## Regole di conteggio
 

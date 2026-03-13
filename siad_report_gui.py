@@ -3,7 +3,12 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import date, datetime
+import json
+import os
 from pathlib import Path
+import subprocess
+import sys
+from tempfile import TemporaryDirectory
 from typing import Any, Iterable
 import re
 import threading
@@ -11,6 +16,11 @@ import xml.etree.ElementTree as ET
 
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+
+try:
+    import xmlschema
+except ModuleNotFoundError:
+    xmlschema = None
 
 
 MONTH_CODES = {
@@ -52,12 +62,33 @@ def quarter_from_path(relative_path: str) -> str:
     return ""
 
 
+def next_available_report_path(xml_dir: Path) -> Path:
+    base_dir = xml_dir.parent
+    base_name = "report_siad"
+    candidate = base_dir / f"{base_name}.xlsx"
+    if not candidate.exists():
+        return candidate
+
+    suffix_pattern = re.compile(rf"^{re.escape(base_name)}_(\d+)\.xlsx$")
+    max_suffix = 1
+    for existing_file in base_dir.glob(f"{base_name}*.xlsx"):
+        match = suffix_pattern.match(existing_file.name)
+        if match:
+            max_suffix = max(max_suffix, int(match.group(1)))
+        elif existing_file.name == f"{base_name}.xlsx":
+            max_suffix = max(max_suffix, 1)
+
+    return base_dir / f"{base_name}_{max_suffix + 1}.xlsx"
+
+
 @dataclass
 class XmlFileInfo:
     path: Path
     relative_path: str
     track: int
     root_name: str
+    line_count: int
+    size_mb: float
 
 
 @dataclass
@@ -242,9 +273,11 @@ def parse_track2_assistenza(assistenza: ET.Element, source_file: str) -> dict | 
     }
 
 
-def scan_xml_files(base_dir: Path, root_to_track: dict[str, int]) -> list[XmlFileInfo]:
+def scan_xml_files(base_dir: Path, root_to_track: dict[str, int], filename_token: str = "SIAD") -> list[XmlFileInfo]:
     results: list[XmlFileInfo] = []
-    for path in sorted(base_dir.rglob("SIAD*.xml")):
+    token = filename_token.strip()
+    pattern = f"{token}*.xml" if token else "*.xml"
+    for path in sorted(base_dir.rglob(pattern)):
         if not path.is_file():
             continue
         track, root_name = classify_xml_file(path, root_to_track)
@@ -254,9 +287,106 @@ def scan_xml_files(base_dir: Path, root_to_track: dict[str, int]) -> list[XmlFil
                 relative_path=path.relative_to(base_dir).as_posix(),
                 track=track,
                 root_name=root_name,
+                line_count=count_file_lines(path),
+                size_mb=file_size_mb(path),
             )
         )
     return results
+
+
+def count_file_lines(path: Path) -> int:
+    line_count = 0
+    with path.open("r", encoding="utf-8", errors="ignore", newline=None) as file_obj:
+        for _ in file_obj:
+            line_count += 1
+    if line_count > 0:
+        return line_count
+    return 1 if path.stat().st_size > 0 else 0
+
+
+def file_size_mb(path: Path) -> float:
+    return path.stat().st_size / (1024 * 1024)
+
+
+def xml_namespace(tag: str) -> str | None:
+    match = XML_NS_RE.match(tag)
+    return match.group("ns") if match else None
+
+
+def strip_namespaces(element: ET.Element) -> None:
+    element.tag = local_name(element.tag)
+    for child in element:
+        strip_namespaces(child)
+
+
+def collect_validation_errors(schema: Any, xml_source: Path) -> list[dict[str, str]]:
+    errors: list[dict[str, str]] = []
+    for error in schema.iter_errors(xml_source):
+        errors.append(
+            {
+                "Path": getattr(error, "path", "") or "",
+                "Messaggio": getattr(error, "reason", None) or str(error),
+            }
+        )
+    return errors
+
+
+def is_namespace_mismatch_error(errors: list[dict[str, str]]) -> bool:
+    mismatch_markers = (
+        "is not an element of the schema",
+        "not an element of the schema",
+    )
+    return any(any(marker in error["Messaggio"] for marker in mismatch_markers) for error in errors)
+
+
+def validate_xml_against_xsd(xml_path: Path, xsd_path: Path) -> list[dict[str, str]]:
+    if xmlschema is None:
+        raise RuntimeError(
+            "La validazione XSD richiede il pacchetto 'xmlschema'. "
+            "Installa le dipendenze aggiornate con: python -m pip install -r requirements.txt"
+        )
+
+    xml_root = ET.parse(xml_path).getroot()
+    xml_target_namespace = xml_namespace(xml_root.tag)
+    xsd_tree = ET.parse(xsd_path)
+    xsd_root = xsd_tree.getroot()
+    xsd_target_namespace = xsd_root.attrib.get("targetNamespace")
+
+    try:
+        schema = xmlschema.XMLSchema(xsd_path)
+        direct_errors = collect_validation_errors(schema, xml_path)
+        if not direct_errors or not xml_target_namespace or xsd_target_namespace or not is_namespace_mismatch_error(direct_errors):
+            return direct_errors
+    except Exception as first_error:
+        if not xml_target_namespace or xsd_target_namespace:
+            raise first_error
+
+    with TemporaryDirectory() as temp_dir:
+        temp_dir_path = Path(temp_dir)
+
+        namespaced_xsd_tree = ET.parse(xsd_path)
+        namespaced_xsd_root = namespaced_xsd_tree.getroot()
+        namespaced_xsd_root.set("targetNamespace", xml_target_namespace)
+        namespaced_xsd_root.set("xmlns", xml_target_namespace)
+        namespaced_xsd_path = temp_dir_path / xsd_path.name
+        namespaced_xsd_tree.write(namespaced_xsd_path, encoding="utf-8", xml_declaration=True)
+
+        try:
+            schema = xmlschema.XMLSchema(namespaced_xsd_path)
+            namespaced_errors = collect_validation_errors(schema, xml_path)
+            if not namespaced_errors or not is_namespace_mismatch_error(namespaced_errors):
+                return namespaced_errors
+        except Exception:
+            pass
+
+        stripped_xml_tree = ET.parse(xml_path)
+        stripped_xml_root = stripped_xml_tree.getroot()
+        strip_namespaces(stripped_xml_root)
+        stripped_xml_path = temp_dir_path / xml_path.name
+        stripped_xml_tree.write(stripped_xml_path, encoding="utf-8", xml_declaration=True)
+
+        schema = xmlschema.XMLSchema(xsd_path)
+        return collect_validation_errors(schema, stripped_xml_path)
 
 
 def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list[dict], list[RecordDetail], list[dict], int]:
@@ -780,6 +910,11 @@ def save_workbook(
 
 
 class SiadReportApp:
+    SPINNER_FRAMES = ["[...]", "[ ..]", "[  .]", "[ ..]"]
+    CHECKED_SYMBOL = "[x]"
+    UNCHECKED_SYMBOL = "[ ]"
+    STATE_FILE_NAME = ".siad_report_gui_state.json"
+
     def __init__(self, root: Any, tk_module: Any, ttk_module: Any, filedialog_module: Any, messagebox_module: Any) -> None:
         self.root = root
         self.tk = tk_module
@@ -794,12 +929,23 @@ class SiadReportApp:
         self.xml_dir_var = self.tk.StringVar()
         self.output_var = self.tk.StringVar()
         self.analysis_year_var = self.tk.StringVar(value="2025")
+        self.filename_token_var = self.tk.StringVar(value="SIAD")
         self.status_var = self.tk.StringVar(value="Seleziona i file XSD, la cartella XML e il file di output.")
+        self.spinner_var = self.tk.StringVar(value="")
+        self.select_all_var = self.tk.BooleanVar(value=False)
 
         self.xml_files: list[XmlFileInfo] = []
         self.summary_rows: list[dict] = []
+        self.validation_rows: list[dict[str, str]] = []
+        self.checked_files: dict[tuple[int, str], bool] = {}
+        self.latest_report_path: Path | None = None
+        self._busy_count = 0
+        self._spinner_job: str | None = None
+        self._spinner_index = 0
+        self._syncing_select_all = False
 
         self._build_ui()
+        self.root.after(0, self.prompt_restore_saved_paths)
 
     def _build_ui(self) -> None:
         frame = self.ttk.Frame(self.root, padding=12)
@@ -807,77 +953,170 @@ class SiadReportApp:
         frame.columnconfigure(1, weight=1)
         frame.rowconfigure(5, weight=1)
 
-        self._add_file_row(frame, 0, "TRACCIATO 1 XSD", self.track1_xsd_var, self.choose_track1_xsd)
-        self._add_file_row(frame, 1, "TRACCIATO 2 XSD", self.track2_xsd_var, self.choose_track2_xsd)
+        self.validate_track1_button = self._add_file_row(
+            frame,
+            0,
+            "TRACCIATO 1 XSD",
+            self.track1_xsd_var,
+            self.choose_track1_xsd,
+            extra_button_text="Valida XML...",
+            extra_button_command=self.validate_xml_with_track1_xsd,
+        )
+        self.validate_track2_button = self._add_file_row(
+            frame,
+            1,
+            "TRACCIATO 2 XSD",
+            self.track2_xsd_var,
+            self.choose_track2_xsd,
+            extra_button_text="Valida XML...",
+            extra_button_command=self.validate_xml_with_track2_xsd,
+        )
         self._add_file_row(frame, 2, "Cartella XML", self.xml_dir_var, self.choose_xml_dir, folder=True)
         self._add_file_row(frame, 3, "Output XLSX", self.output_var, self.choose_output)
+        self.validate_track1_button.grid_remove()
+        self.validate_track2_button.grid_remove()
 
-        self.ttk.Label(frame, text="Anno di analisi").grid(row=4, column=0, sticky="w", pady=(8, 8))
-        self.ttk.Entry(frame, textvariable=self.analysis_year_var, width=12).grid(row=4, column=1, sticky="w", pady=(8, 8))
+        options_row = self.ttk.Frame(frame)
+        options_row.grid(row=4, column=0, columnspan=2, sticky="w", pady=(8, 8))
+        self.ttk.Label(options_row, text="Anno di analisi").pack(side="left")
+        self.ttk.Entry(options_row, textvariable=self.analysis_year_var, width=12).pack(side="left", padx=(8, 24))
+        self.ttk.Label(options_row, text="Token file XML").pack(side="left")
+        token_combo = self.ttk.Combobox(
+            options_row,
+            textvariable=self.filename_token_var,
+            values=("SIAD",),
+            width=12,
+            state="readonly",
+        )
+        token_combo.pack(side="left", padx=(8, 0))
 
         buttons = self.ttk.Frame(frame)
         buttons.grid(row=4, column=2, sticky="e", pady=(8, 8))
         self.ttk.Button(buttons, text="Scansiona XML", command=self.scan_files).pack(side="left", padx=(0, 8))
         self.ttk.Button(buttons, text="Genera report", command=self.generate_report).pack(side="left")
 
-        notebook = self.ttk.Notebook(frame)
-        notebook.grid(row=5, column=0, columnspan=4, sticky="nsew")
+        self.notebook = self.ttk.Notebook(frame)
+        self.notebook.grid(row=5, column=0, columnspan=4, sticky="nsew")
 
-        files_tab = self.ttk.Frame(notebook, padding=8)
-        summary_tab = self.ttk.Frame(notebook, padding=8)
-        notebook.add(files_tab, text="File XML")
-        notebook.add(summary_tab, text="Riepilogo")
+        files_tab = self.ttk.Frame(self.notebook, padding=8)
+        summary_tab = self.ttk.Frame(self.notebook, padding=8)
+        validation_tab = self.ttk.Frame(self.notebook, padding=8)
+        self.notebook.add(files_tab, text="File XML")
+        self.notebook.add(summary_tab, text="Riepilogo")
+        self.notebook.add(validation_tab, text="Validazione")
 
         files_tab.columnconfigure(0, weight=1)
-        files_tab.rowconfigure(0, weight=1)
+        files_tab.rowconfigure(1, weight=1)
         summary_tab.columnconfigure(0, weight=1)
         summary_tab.rowconfigure(0, weight=1)
+        validation_tab.columnconfigure(0, weight=1)
+        validation_tab.rowconfigure(0, weight=1)
 
-        file_columns = ("track", "relative_path")
+        self.ttk.Checkbutton(
+            files_tab,
+            text="Seleziona tutti",
+            variable=self.select_all_var,
+            command=self.toggle_all_files,
+        ).grid(row=0, column=0, sticky="w", pady=(0, 8))
+
+        file_columns = ("row_number", "checked", "track", "line_count", "size_mb", "relative_path")
         self.file_tree = self.ttk.Treeview(files_tab, columns=file_columns, show="headings", height=20)
+        self.file_tree.heading("row_number", text="#")
+        self.file_tree.heading("checked", text="Sel")
         self.file_tree.heading("track", text="Tracciato")
+        self.file_tree.heading("line_count", text="Righe")
+        self.file_tree.heading("size_mb", text="MB")
         self.file_tree.heading("relative_path", text="File XML")
-        self.file_tree.column("track", width=100, anchor="center")
-        self.file_tree.column("relative_path", width=900)
-        self.file_tree.grid(row=0, column=0, sticky="nsew")
+        self.file_tree.column("row_number", width=60, anchor="center", stretch=False)
+        self.file_tree.column("checked", width=60, anchor="center", stretch=False)
+        self.file_tree.column("track", width=100, anchor="center", stretch=False)
+        self.file_tree.column("line_count", width=90, anchor="e", stretch=False)
+        self.file_tree.column("size_mb", width=90, anchor="e", stretch=False)
+        self.file_tree.column("relative_path", width=600, anchor="w")
+        self.file_tree.grid(row=1, column=0, sticky="nsew")
+        self.file_tree.bind("<ButtonRelease-1>", self.on_file_clicked)
 
         file_scrollbar = self.ttk.Scrollbar(files_tab, orient="vertical", command=self.file_tree.yview)
-        file_scrollbar.grid(row=0, column=1, sticky="ns")
+        file_scrollbar.grid(row=1, column=1, sticky="ns")
         self.file_tree.configure(yscrollcommand=file_scrollbar.set)
 
         self.summary_tree = self.ttk.Treeview(summary_tab, show="headings", height=20)
         self.summary_tree.grid(row=0, column=0, sticky="nsew")
         summary_scrollbar = self.ttk.Scrollbar(summary_tab, orient="vertical", command=self.summary_tree.yview)
         summary_scrollbar.grid(row=0, column=1, sticky="ns")
-        self.summary_tree.configure(yscrollcommand=summary_scrollbar.set)
+        summary_x_scrollbar = self.ttk.Scrollbar(summary_tab, orient="horizontal", command=self.summary_tree.xview)
+        summary_x_scrollbar.grid(row=1, column=0, sticky="ew")
+        self.summary_tree.configure(yscrollcommand=summary_scrollbar.set, xscrollcommand=summary_x_scrollbar.set)
 
-        self.ttk.Label(frame, textvariable=self.status_var).grid(row=6, column=0, columnspan=3, sticky="w", pady=(10, 0))
+        validation_columns = ("file_xml", "path", "messaggio")
+        self.validation_tree = self.ttk.Treeview(validation_tab, columns=validation_columns, show="headings", height=20)
+        self.validation_tree.heading("file_xml", text="File XML")
+        self.validation_tree.heading("path", text="Path")
+        self.validation_tree.heading("messaggio", text="Errore")
+        self.validation_tree.column("file_xml", width=320, anchor="w")
+        self.validation_tree.column("path", width=220, anchor="w")
+        self.validation_tree.column("messaggio", width=700, anchor="w")
+        self.validation_tree.grid(row=0, column=0, sticky="nsew")
 
-    def _add_file_row(self, parent, row: int, label: str, variable: Any, command, folder: bool = False) -> None:
+        validation_scrollbar = self.ttk.Scrollbar(validation_tab, orient="vertical", command=self.validation_tree.yview)
+        validation_scrollbar.grid(row=0, column=1, sticky="ns")
+        self.validation_tree.configure(yscrollcommand=validation_scrollbar.set)
+
+        status_bar = self.ttk.Frame(frame)
+        status_bar.grid(row=6, column=0, columnspan=3, sticky="ew", pady=(10, 0))
+        status_bar.columnconfigure(1, weight=1)
+        self.ttk.Label(status_bar, textvariable=self.spinner_var, width=5, anchor="w").grid(row=0, column=0, sticky="w")
+        self.status_label = self.ttk.Label(status_bar, textvariable=self.status_var)
+        self.status_label.grid(row=0, column=1, sticky="w")
+        self.status_label.bind("<Button-1>", self.on_status_label_clicked)
+
+    def _add_file_row(
+        self,
+        parent,
+        row: int,
+        label: str,
+        variable: Any,
+        command,
+        folder: bool = False,
+        extra_button_text: str | None = None,
+        extra_button_command=None,
+    ):
         self.ttk.Label(parent, text=label).grid(row=row, column=0, sticky="w", pady=4)
         self.ttk.Entry(parent, textvariable=variable).grid(row=row, column=1, sticky="ew", padx=(8, 8), pady=4)
         self.ttk.Button(parent, text="Sfoglia...", command=command).grid(row=row, column=2, sticky="e", pady=4)
+        extra_button = None
+        if extra_button_text and extra_button_command:
+            extra_button = self.ttk.Button(parent, text=extra_button_text, command=extra_button_command)
+            extra_button.grid(row=row, column=3, sticky="e", pady=4, padx=(8, 0))
+        return extra_button
 
     def choose_track1_xsd(self) -> None:
         path = self.filedialog.askopenfilename(filetypes=[("XSD files", "*.xsd"), ("All files", "*.*")])
         if path:
             self.track1_xsd_var.set(path)
+            self.validate_track1_button.grid()
+            self.save_current_paths()
 
     def choose_track2_xsd(self) -> None:
         path = self.filedialog.askopenfilename(filetypes=[("XSD files", "*.xsd"), ("All files", "*.*")])
         if path:
             self.track2_xsd_var.set(path)
+            self.validate_track2_button.grid()
+            self.save_current_paths()
 
     def choose_xml_dir(self) -> None:
         path = self.filedialog.askdirectory()
         if path:
             self.xml_dir_var.set(path)
+            self.refresh_output_from_xml_dir()
+            self.save_current_paths()
 
     def choose_output(self) -> None:
         path = self.filedialog.asksaveasfilename(
             defaultextension=".xlsx",
             filetypes=[("Excel workbook", "*.xlsx")],
             initialfile="report_siad.xlsx",
+            confirmoverwrite=False,
         )
         if path:
             self.output_var.set(path)
@@ -908,39 +1147,331 @@ class SiadReportApp:
             self.messagebox.showerror("Errore", "La cartella XML selezionata non esiste.")
             return None
 
+        if not self.filename_token_var.get().strip():
+            self.messagebox.showerror("Errore", "Seleziona un token valido per il riconoscimento dei file XML.")
+            return None
+
         return paths[0], paths[1], paths[2], paths[3], year
+
+    def start_busy_indicator(self) -> None:
+        self._busy_count += 1
+        if self._spinner_job is None:
+            self._spinner_index = 0
+            self._animate_spinner()
+
+    def stop_busy_indicator(self) -> None:
+        self._busy_count = max(0, self._busy_count - 1)
+        if self._busy_count == 0:
+            if self._spinner_job is not None:
+                self.root.after_cancel(self._spinner_job)
+                self._spinner_job = None
+            self.spinner_var.set("")
+
+    def _animate_spinner(self) -> None:
+        self.spinner_var.set(self.SPINNER_FRAMES[self._spinner_index % len(self.SPINNER_FRAMES)])
+        self._spinner_index += 1
+        self._spinner_job = self.root.after(250, self._animate_spinner)
+
+    def state_file_path(self) -> Path:
+        return Path(__file__).with_name(self.STATE_FILE_NAME)
+
+    def load_saved_paths(self) -> dict[str, str]:
+        state_path = self.state_file_path()
+        if not state_path.is_file():
+            return {}
+        try:
+            data = json.loads(state_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            return {}
+        return data if isinstance(data, dict) else {}
+
+    def save_current_paths(self) -> None:
+        state = {
+            "track1_xsd": self.track1_xsd_var.get().strip(),
+            "track2_xsd": self.track2_xsd_var.get().strip(),
+            "xml_dir": self.xml_dir_var.get().strip(),
+        }
+        try:
+            self.state_file_path().write_text(json.dumps(state, indent=2), encoding="utf-8")
+        except OSError:
+            pass
+
+    def prompt_restore_saved_paths(self) -> None:
+        state = self.load_saved_paths()
+        self.prompt_restore_single_path(
+            "VUoi ricaricare il path del TRACCIATO1?",
+            state.get("track1_xsd", ""),
+            self.track1_xsd_var,
+            is_file=True,
+            on_accept=lambda: self.validate_track1_button.grid(),
+            on_decline=lambda: self._clear_track_path(self.track1_xsd_var, self.validate_track1_button),
+        )
+        self.prompt_restore_single_path(
+            "VUoi ricaricare il path del TRACCIATO2?",
+            state.get("track2_xsd", ""),
+            self.track2_xsd_var,
+            is_file=True,
+            on_accept=lambda: self.validate_track2_button.grid(),
+            on_decline=lambda: self._clear_track_path(self.track2_xsd_var, self.validate_track2_button),
+        )
+        self.prompt_restore_single_path(
+            "VUoi ricaricare il path della CARTELLA?",
+            state.get("xml_dir", ""),
+            self.xml_dir_var,
+            is_file=False,
+            on_accept=self.refresh_output_from_xml_dir,
+            on_decline=self._clear_xml_dir_path,
+        )
+
+    def prompt_restore_single_path(
+        self,
+        question: str,
+        saved_path: str,
+        variable: Any,
+        *,
+        is_file: bool,
+        on_accept=None,
+        on_decline=None,
+    ) -> None:
+        if not saved_path:
+            return
+        candidate = Path(saved_path)
+        exists = candidate.is_file() if is_file else candidate.is_dir()
+        if not exists:
+            return
+        should_restore = self.messagebox.askyesno("Ripristino path", f"{question}\n\n{saved_path}")
+        if should_restore:
+            variable.set(saved_path)
+            if on_accept is not None:
+                on_accept()
+        else:
+            variable.set("")
+            if on_decline is not None:
+                on_decline()
+        self.save_current_paths()
+
+    def _clear_track_path(self, variable: Any, button: Any) -> None:
+        variable.set("")
+        button.grid_remove()
+
+    def _clear_xml_dir_path(self) -> None:
+        self.xml_dir_var.set("")
+        self.output_var.set("")
+
+    def refresh_output_from_xml_dir(self) -> None:
+        xml_dir_value = self.xml_dir_var.get().strip()
+        if not xml_dir_value:
+            self.output_var.set("")
+            return
+        self.output_var.set(str(next_available_report_path(Path(xml_dir_value))))
+
+    def validate_xml_with_track1_xsd(self) -> None:
+        self.validate_xml_with_selected_xsd(1, Path(self.track1_xsd_var.get().strip()))
+
+    def validate_xml_with_track2_xsd(self) -> None:
+        self.validate_xml_with_selected_xsd(2, Path(self.track2_xsd_var.get().strip()))
+
+    def validate_xml_with_selected_xsd(self, track: int, xsd_path: Path) -> None:
+        if not xsd_path.is_file():
+            self.messagebox.showerror("Errore", f"XSD del tracciato {track} non valido o non selezionato.")
+            return
+        xml_path = self.filedialog.askopenfilename(
+            title=f"Seleziona XML da validare con XSD tracciato {track}",
+            filetypes=[("XML files", "*.xml"), ("All files", "*.*")],
+        )
+        if not xml_path:
+            return
+        xml_file_info = XmlFileInfo(
+            path=Path(xml_path),
+            relative_path=Path(xml_path).name,
+            track=track,
+            root_name="",
+        )
+        self.set_status_message(f"Validazione in corso: {xml_file_info.relative_path}")
+        self.start_busy_indicator()
+        threading.Thread(
+            target=self._validate_xml_worker,
+            args=(xml_file_info, xsd_path),
+            daemon=True,
+        ).start()
+
+    def set_status_message(self, message: str, clickable_path: Path | None = None) -> None:
+        self.status_var.set(message)
+        self.latest_report_path = clickable_path
+        if clickable_path is not None:
+            self.status_label.configure(cursor="hand2", foreground="#0B5ED7")
+        else:
+            self.status_label.configure(cursor="", foreground="")
+
+    def on_status_label_clicked(self, _event) -> None:
+        if self.latest_report_path is None:
+            return
+        try:
+            self.open_path(self.latest_report_path)
+        except Exception as exc:
+            self.messagebox.showerror("Errore", f"Impossibile aprire il report:\n{exc}")
+
+    def open_path(self, path: Path) -> None:
+        if sys.platform.startswith("win"):
+            os.startfile(path)  # type: ignore[attr-defined]
+            return
+        if sys.platform == "darwin":
+            subprocess.Popen(["open", str(path)])
+            return
+        subprocess.Popen(["xdg-open", str(path)])
+
+    def file_key(self, xml_file_info: XmlFileInfo) -> tuple[int, str]:
+        return (xml_file_info.track, xml_file_info.relative_path)
+
+    def is_file_checked(self, xml_file_info: XmlFileInfo) -> bool:
+        return self.checked_files.get(self.file_key(xml_file_info), False)
+
+    def set_file_checked(self, xml_file_info: XmlFileInfo, checked: bool) -> None:
+        self.checked_files[self.file_key(xml_file_info)] = checked
+
+    def populate_file_tree(self) -> None:
+        for item in self.file_tree.get_children():
+            self.file_tree.delete(item)
+        for index, info in enumerate(self.xml_files, start=1):
+            checked_symbol = self.CHECKED_SYMBOL if self.is_file_checked(info) else self.UNCHECKED_SYMBOL
+            self.file_tree.insert(
+                "",
+                "end",
+                values=(index, checked_symbol, info.track, info.line_count, f"{info.size_mb:.2f}", info.relative_path),
+            )
+        self.update_select_all_state()
+
+    def update_select_all_state(self) -> None:
+        self._syncing_select_all = True
+        all_selected = bool(self.xml_files) and all(self.is_file_checked(info) for info in self.xml_files)
+        self.select_all_var.set(all_selected)
+        self._syncing_select_all = False
+
+    def toggle_all_files(self) -> None:
+        if self._syncing_select_all or not self.xml_files:
+            return
+        select_all = not all(self.is_file_checked(info) for info in self.xml_files)
+        for info in self.xml_files:
+            self.set_file_checked(info, select_all)
+        self.select_all_var.set(select_all)
+        self.populate_file_tree()
+
+    def on_file_clicked(self, event) -> None:
+        item_id = self.file_tree.identify_row(event.y)
+        if not item_id:
+            return
+        if self.file_tree.identify_region(event.x, event.y) != "cell":
+            return
+
+        column = self.file_tree.identify_column(event.x)
+        values = self.file_tree.item(item_id, "values")
+        if len(values) != 6:
+            return
+
+        track = int(values[2])
+        relative_path = values[5]
+        xml_file_info = next((info for info in self.xml_files if info.relative_path == relative_path and info.track == track), None)
+        if xml_file_info is None:
+            return
+
+        if column == "#2":
+            self.set_file_checked(xml_file_info, not self.is_file_checked(xml_file_info))
+            self.populate_file_tree()
+            return
+        if column != "#6":
+            return
+
+        xsd_path = Path(self.track1_xsd_var.get().strip()) if track == 1 else Path(self.track2_xsd_var.get().strip())
+        if not xsd_path.is_file():
+            self.messagebox.showerror("Errore", f"XSD del tracciato {track} non valido o non selezionato.")
+            return
+
+        should_validate = self.messagebox.askyesno(
+            "Validazione XML",
+            f"Hai selezionato un file del tracciato {track}.\n\n"
+            f"Vuoi validare questo XML con il relativo XSD?\n\n{xml_file_info.relative_path}",
+        )
+        if not should_validate:
+            return
+
+        self.set_status_message(f"Validazione in corso: {xml_file_info.relative_path}")
+        self.start_busy_indicator()
+        threading.Thread(
+            target=self._validate_xml_worker,
+            args=(xml_file_info, xsd_path),
+            daemon=True,
+        ).start()
+
+    def _validate_xml_worker(self, xml_file_info: XmlFileInfo, xsd_path: Path) -> None:
+        try:
+            errors = validate_xml_against_xsd(xml_file_info.path, xsd_path)
+        except Exception as exc:
+            self.root.after(0, lambda: self.messagebox.showerror("Errore", str(exc)))
+            self.root.after(0, lambda: self.set_status_message("Validazione fallita."))
+            self.root.after(0, self.stop_busy_indicator)
+            return
+
+        def done() -> None:
+            rows = [
+                {
+                    "file_xml": xml_file_info.relative_path,
+                    "path": error["Path"],
+                    "messaggio": error["Messaggio"],
+                }
+                for error in errors
+            ]
+            self.populate_validation_tree(rows)
+            self.notebook.select(2)
+            if errors:
+                self.set_status_message(f"Validazione completata con {len(errors)} errore/i.")
+                self.messagebox.showerror(
+                    "Validazione non superata",
+                    f"Il file {xml_file_info.relative_path} contiene {len(errors)} errore/i di validazione.\n"
+                    "Controlla la tab 'Validazione' per il dettaglio.",
+                )
+            else:
+                self.set_status_message("Validazione completata senza errori.")
+                self.messagebox.showinfo(
+                    "Validazione OK",
+                    f"Il file {xml_file_info.relative_path} e' conforme allo XSD del tracciato {xml_file_info.track}.",
+                )
+            self.stop_busy_indicator()
+
+        self.root.after(0, done)
 
     def scan_files(self) -> None:
         validated = self.validate_inputs()
         if validated is None:
             return
         track1_xsd, track2_xsd, xml_dir, _, _ = validated
-        self.status_var.set("Scansione XML in corso...")
+        filename_token = self.filename_token_var.get().strip()
+        self.set_status_message("Scansione XML in corso...")
+        self.start_busy_indicator()
         threading.Thread(
             target=self._scan_files_worker,
-            args=(track1_xsd, track2_xsd, xml_dir),
+            args=(track1_xsd, track2_xsd, xml_dir, filename_token),
             daemon=True,
         ).start()
 
-    def _scan_files_worker(self, track1_xsd: Path, track2_xsd: Path, xml_dir: Path) -> None:
+    def _scan_files_worker(self, track1_xsd: Path, track2_xsd: Path, xml_dir: Path, filename_token: str) -> None:
         try:
             root_to_track = {
                 parse_xsd_root_name(track1_xsd): 1,
                 parse_xsd_root_name(track2_xsd): 2,
             }
-            xml_files = scan_xml_files(xml_dir, root_to_track)
+            xml_files = scan_xml_files(xml_dir, root_to_track, filename_token=filename_token)
         except Exception as exc:
             self.root.after(0, lambda: self.messagebox.showerror("Errore", str(exc)))
-            self.root.after(0, lambda: self.status_var.set("Scansione fallita."))
+            self.root.after(0, lambda: self.set_status_message("Scansione fallita."))
+            self.root.after(0, self.stop_busy_indicator)
             return
 
         def update_ui() -> None:
             self.xml_files = xml_files
-            for item in self.file_tree.get_children():
-                self.file_tree.delete(item)
-            for info in xml_files:
-                self.file_tree.insert("", "end", values=(info.track, info.relative_path))
-            self.status_var.set(f"Trovati {len(xml_files)} file XML SIAD.")
+            self.checked_files = {self.file_key(info): True for info in xml_files}
+            self.populate_file_tree()
+            self.set_status_message(f"Trovati {len(xml_files)} file XML SIAD.")
+            self.stop_busy_indicator()
 
         self.root.after(0, update_ui)
 
@@ -949,36 +1480,56 @@ class SiadReportApp:
         if validated is None:
             return
         _, _, xml_dir, output_path, analysis_year = validated
+        filename_token = self.filename_token_var.get().strip()
         if not self.xml_files:
             try:
                 root_to_track = {
                     parse_xsd_root_name(Path(self.track1_xsd_var.get().strip())): 1,
                     parse_xsd_root_name(Path(self.track2_xsd_var.get().strip())): 2,
                 }
-                self.xml_files = scan_xml_files(xml_dir, root_to_track)
+                self.xml_files = scan_xml_files(xml_dir, root_to_track, filename_token=filename_token)
+                self.checked_files = {self.file_key(info): True for info in self.xml_files}
+                self.root.after(0, self.populate_file_tree)
             except Exception as exc:
                 self.messagebox.showerror("Errore", str(exc))
                 return
-        self.status_var.set("Generazione report in corso...")
+        selected_xml_files = [info for info in self.xml_files if self.is_file_checked(info)]
+        if not selected_xml_files:
+            self.messagebox.showerror("Errore", "Seleziona almeno un file XML da includere nel report.")
+            return
+        deselected_count = len(self.xml_files) - len(selected_xml_files)
+        if deselected_count > 0:
+            self.messagebox.showinfo(
+                "Selezione parziale",
+                f"Il report verra' generato usando {len(selected_xml_files)} file selezionati "
+                f"e ignorando {deselected_count} file non selezionati.",
+            )
+        self.set_status_message("Generazione report in corso...")
+        self.start_busy_indicator()
         threading.Thread(
             target=self._generate_report_worker,
-            args=(output_path, analysis_year),
+            args=(selected_xml_files, output_path, analysis_year),
             daemon=True,
         ).start()
 
-    def _generate_report_worker(self, output_path: Path, analysis_year: int) -> None:
+    def _generate_report_worker(self, xml_files: list[XmlFileInfo], output_path: Path, analysis_year: int) -> None:
         try:
-            summary_rows, details, unique_cf_rows, global_single_heads = build_report(self.xml_files, analysis_year)
+            summary_rows, details, unique_cf_rows, global_single_heads = build_report(xml_files, analysis_year)
             output_path.parent.mkdir(parents=True, exist_ok=True)
+            if output_path.exists():
+                output_path.unlink()
             save_workbook(output_path, summary_rows, details, unique_cf_rows, global_single_heads)
         except Exception as exc:
             self.root.after(0, lambda: self.messagebox.showerror("Errore", str(exc)))
-            self.root.after(0, lambda: self.status_var.set("Generazione report fallita."))
+            self.root.after(0, lambda: self.set_status_message("Generazione report fallita."))
+            self.root.after(0, self.stop_busy_indicator)
             return
 
         def done() -> None:
-            self.populate_summary_tree(add_total_row(summary_rows, global_single_heads))
-            self.status_var.set(f"Report creato: {output_path}")
+            self.summary_rows = add_total_row(summary_rows, global_single_heads)
+            self.populate_summary_tree(self.summary_rows)
+            self.set_status_message(f"Report creato: {output_path}", clickable_path=output_path)
+            self.stop_busy_indicator()
             self.messagebox.showinfo("Completato", f"Report salvato in:\n{output_path}")
 
         self.root.after(0, done)
@@ -999,6 +1550,14 @@ class SiadReportApp:
             self.summary_tree.column(header, width=width, anchor=anchor)
         for row in rows:
             self.summary_tree.insert("", "end", values=[row[h] for h in headers])
+
+    def populate_validation_tree(self, rows: list[dict[str, str]]) -> None:
+        self.validation_rows = rows
+        for item in self.validation_tree.get_children():
+            self.validation_tree.delete(item)
+
+        for row in rows:
+            self.validation_tree.insert("", "end", values=(row["file_xml"], row["path"], row["messaggio"]))
 
 
 def main() -> None:
