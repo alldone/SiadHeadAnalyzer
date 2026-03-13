@@ -16,19 +16,16 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            artifact_name: ReportSIAD-windows
-            archive_cmd: powershell -Command "Compress-Archive -Path dist/ReportSIAD/* -DestinationPath dist/ReportSIAD-windows.zip"
-            archive_path: dist/ReportSIAD-windows.zip
+            platform_suffix: windows
           - os: macos-15-intel
-            artifact_name: ReportSIAD-macos-intel
-            archive_cmd: zip -r dist/ReportSIAD-macos-intel.zip dist/ReportSIAD
-            archive_path: dist/ReportSIAD-macos-intel.zip
+            platform_suffix: macos-intel
           - os: macos-latest
-            artifact_name: ReportSIAD-macos-apple-silicon
-            archive_cmd: zip -r dist/ReportSIAD-macos-apple-silicon.zip dist/ReportSIAD
-            archive_path: dist/ReportSIAD-macos-apple-silicon.zip
+            platform_suffix: macos-apple-silicon
 
     runs-on: ${{ matrix.os }}
+    env:
+      RELEASE_VERSION: ${{ github.ref_name }}
+      ARCHIVE_BASENAME: ReportSIAD-${{ github.ref_name }}-${{ matrix.platform_suffix }}
 
     steps:
       - uses: actions/checkout@v4
@@ -45,17 +42,23 @@ jobs:
       - name: Build executable
         run: pyinstaller --noconfirm siad_report_gui.spec
 
-      - name: Archive build
-        run: ${{ matrix.archive_cmd }}
+      - name: Archive build (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path dist/ReportSIAD/* -DestinationPath "dist/${env:ARCHIVE_BASENAME}.zip"
+
+      - name: Archive build (macOS)
+        if: runner.os == 'macOS'
+        run: zip -r "dist/${ARCHIVE_BASENAME}.zip" dist/ReportSIAD
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.artifact_name }}
-          path: ${{ matrix.archive_path }}
+          name: ${{ env.ARCHIVE_BASENAME }}
+          path: dist/${{ env.ARCHIVE_BASENAME }}.zip
 
       - name: Publish release assets
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ matrix.archive_path }}
+          files: dist/${{ env.ARCHIVE_BASENAME }}.zip
