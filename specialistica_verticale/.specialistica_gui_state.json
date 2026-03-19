@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "input_dir": "/Users/aldo/Library/CloudStorage/OneDrive-Personale/specialistica/bancadati",
+  "output_dir": "/Users/aldo/Library/CloudStorage/OneDrive-Personale/specialistica/output_test",
+  "mapping_file": "/Users/aldo/Desktop/PROGETTI/python/SiadHeadAnalyzer/specialistica_verticale/BRANCA_Codici regionali-Codici SSN.xlsx"
+}

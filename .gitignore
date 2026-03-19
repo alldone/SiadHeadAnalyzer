@@ -13,8 +13,9 @@ dist/
 
 *.xlsx
 ~$*.xlsx
+!specialistica_verticale/FORMAT_ACQUAVIVA.xlsx
+!specialistica_verticale/BRANCA_Codici regionali-Codici SSN.xlsx
 
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-

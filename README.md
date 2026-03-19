@@ -2,6 +2,20 @@
 
 Applicazione desktop Python per analizzare i flussi `SIAD` a partire dai due tracciati XML/XSD, costruire riepiloghi per azienda e produrre un report Excel strutturato, leggibile e pronto per la verifica operativa.
 
+## Verticali nel repo
+
+Il repository ospita due verticali distinti, orchestrati da un launcher unico:
+
+- `main_gui.py`
+  launcher principale con ribbon e tab `Home`, `SIAD`, `Specialistica`
+
+- `siad_report_gui.py`
+  verticale desktop standalone `SIAD`
+- `specialistica_gui.py`
+  verticale desktop standalone `Specialistica`
+
+Il verticale `Specialistica` vive nella cartella `specialistica_verticale/` ed e' separato dal codice `SIAD`.
+
 ## Cosa fa
 
 - legge i due `XSD` dei tracciati SIAD;
@@ -86,7 +100,7 @@ cd /percorso/progetto
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python siad_report_gui.py
+python main_gui.py
 ```
 
 ### Windows
@@ -96,7 +110,7 @@ cd C:\percorso\progetto
 py -m venv .venv
 .venv\Scripts\activate
 python -m pip install -r requirements.txt
-python siad_report_gui.py
+python main_gui.py
 ```
 
 Nota:
@@ -119,7 +133,7 @@ pyinstaller --noconfirm siad_report_gui.spec
 
 Output:
 
-- `dist/ReportSIAD/`
+- `dist/SiadHeadAnalyzer/`
 
 ## Release automatiche su GitHub
 
@@ -144,8 +158,12 @@ git push origin v1.0.0
 
 ## Struttura repository
 
+- `main_gui.py`
+  launcher principale della suite
 - `siad_report_gui.py`
-  applicazione principale
+  verticale standalone `SIAD`
+- `specialistica_gui.py`
+  verticale standalone `Specialistica`
 - `requirements.txt`
   dipendenze runtime
 - `requirements-dev.txt`

@@ -915,14 +915,27 @@ class SiadReportApp:
     UNCHECKED_SYMBOL = "[ ]"
     STATE_FILE_NAME = ".siad_report_gui_state.json"
 
-    def __init__(self, root: Any, tk_module: Any, ttk_module: Any, filedialog_module: Any, messagebox_module: Any) -> None:
+    def __init__(
+        self,
+        root: Any,
+        tk_module: Any,
+        ttk_module: Any,
+        filedialog_module: Any,
+        messagebox_module: Any,
+        *,
+        parent: Any | None = None,
+        embed_mode: bool = False,
+    ) -> None:
         self.root = root
+        self.parent = parent or root
+        self.embed_mode = embed_mode
         self.tk = tk_module
         self.ttk = ttk_module
         self.filedialog = filedialog_module
         self.messagebox = messagebox_module
-        self.root.title("Report SIAD")
-        self.root.geometry("1100x700")
+        if not self.embed_mode:
+            self.root.title("Report SIAD")
+            self.root.geometry("1100x700")
 
         self.track1_xsd_var = self.tk.StringVar()
         self.track2_xsd_var = self.tk.StringVar()
@@ -948,7 +961,7 @@ class SiadReportApp:
         self.root.after(0, self.prompt_restore_saved_paths)
 
     def _build_ui(self) -> None:
-        frame = self.ttk.Frame(self.root, padding=12)
+        frame = self.ttk.Frame(self.parent, padding=12)
         frame.pack(fill="both", expand=True)
         frame.columnconfigure(1, weight=1)
         frame.rowconfigure(5, weight=1)

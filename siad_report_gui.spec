@@ -3,11 +3,21 @@
 block_cipher = None
 
 a = Analysis(
-    ['siad_report_gui.py'],
+    ['main_gui.py'],
     pathex=[],
     binaries=[],
-    datas=[],
-    hiddenimports=[],
+    datas=[
+        ('Siad1_struttura_v2024.xsd', '.'),
+        ('Siad2_struttura_v2024 (1).xsd', '.'),
+        ('specialistica_verticale/FORMAT_ACQUAVIVA.xlsx', 'specialistica_verticale'),
+        ('specialistica_verticale/BRANCA_Codici regionali-Codici SSN.xlsx', 'specialistica_verticale'),
+        ('specialistica_verticale/NOTE_ETL_SPECIALISTICA.md', 'specialistica_verticale'),
+    ],
+    hiddenimports=[
+        'specialistica_verticale.specialistica_gui',
+        'specialistica_verticale.etl_bancadati',
+        'specialistica_verticale.validate_output',
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -21,7 +31,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='ReportSIAD',
+    name='SiadHeadAnalyzer',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -37,5 +47,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='ReportSIAD',
+    name='SiadHeadAnalyzer',
 )
