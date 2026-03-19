@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - 'v*'
+      - 'V*'
   workflow_dispatch:
 
 permissions:
@@ -24,6 +25,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
     env:
+      APP_DIRNAME: SiadHeadAnalyzer
       RELEASE_VERSION: ${{ github.ref_name }}
       ARCHIVE_BASENAME: ReportSIAD-${{ github.ref_name }}-${{ matrix.platform_suffix }}
 
@@ -44,12 +46,14 @@ jobs:
 
       - name: Archive build (Windows)
         if: runner.os == 'Windows'
+        working-directory: dist
         shell: pwsh
-        run: Compress-Archive -Path dist/ReportSIAD/* -DestinationPath "dist/${env:ARCHIVE_BASENAME}.zip"
+        run: Compress-Archive -Path "${env:APP_DIRNAME}" -DestinationPath "${env:ARCHIVE_BASENAME}.zip"
 
       - name: Archive build (macOS)
         if: runner.os == 'macOS'
-        run: zip -r "dist/${ARCHIVE_BASENAME}.zip" dist/ReportSIAD
+        working-directory: dist
+        run: zip -r "${ARCHIVE_BASENAME}.zip" "${APP_DIRNAME}"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
