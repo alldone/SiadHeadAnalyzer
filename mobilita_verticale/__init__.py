@@ -1,0 +1,1 @@
+"""Verticale Mobilita Farmaci infraregionale."""

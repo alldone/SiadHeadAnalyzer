@@ -14,6 +14,8 @@ a = Analysis(
         ('specialistica_verticale/NOTE_ETL_SPECIALISTICA.md', 'specialistica_verticale'),
     ],
     hiddenimports=[
+        'mobilita_verticale.mobilita_gui',
+        'mobilita_verticale.mobilita_report',
         'specialistica_verticale.specialistica_gui',
         'specialistica_verticale.etl_bancadati',
         'specialistica_verticale.validate_output',

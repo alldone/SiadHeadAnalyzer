@@ -1,4 +1,96 @@
-# Memoria Progetto SIAD
+# Memoria Progetto SiadHeadAnalyzer
+
+## Verticale Mobilita Farmaci
+
+### Obiettivo
+
+Nuovo verticale dedicato alla mobilita infraregionale farmaci, con GUI `tkinter` separata e integrazione nel launcher principale.
+
+Il verticale:
+
+- acquisisce separatamente la cartella `attiva` e la cartella `passiva`;
+- abbina per ogni azienda erogatrice i file `<codice> importi.csv` e `<codice> prestazioni.csv`;
+- usa una listbox multi-selezione per scegliere le colonne da riportare;
+- di default seleziona `FARMACEUTICA` e `SOMM. DIRETTA DI FARMACI`;
+- scrive un workbook Excel con due fogli: `attiva` e `passiva`;
+- esegue sempre un controllo automatico degli importi tra input e output.
+
+### Convenzioni dataset rilevate
+
+- L'azienda erogatrice e' nel nome file, ad esempio `201 importi.csv`.
+- Nel flusso `attiva` la prima colonna del CSV e' `ASL`.
+- Nel flusso `passiva` la prima colonna del CSV e' `AZIENDA SANITARIA CREDITRICE`.
+- Nei CSV `passiva` la colonna `SOMM. DIRETTA DI  FARMACI` puo avere doppio spazio interno, da normalizzare in lettura.
+- I numeri usano il formato italiano:
+  `.` separatore delle migliaia, `,` separatore dei decimali.
+
+### Ordinamento richiesto
+
+Le aziende erogatrici nel report devono essere ordinate cosi:
+
+- `201`
+- `202`
+- `203`
+- `204`
+- `205`
+- `912`
+- `914`
+- `915`
+- `916`
+
+Eventuali codici non previsti vanno dopo quelli ordinati esplicitamente.
+
+### Struttura report Excel
+
+Ogni workbook contiene esattamente due fogli:
+
+- `attiva`
+- `passiva`
+
+Ogni foglio espone le colonne:
+
+- `AZIENDA EROGATRICE`
+- `AZIENDA SANITARIA DEBITRICE` nel foglio `attiva`
+- `AZIENDA SANITARIA CREDITRICE` nel foglio `passiva`
+- `FARMACEUTICA - IMPORTI`
+- `FARMACEUTICA - PRESTAZIONI`
+- `SOMM. DIRETTA DI FARMACI - IMPORTI`
+- `SOMM. DIRETTA DI FARMACI - PRESTAZIONI`
+
+Ogni foglio deve includere anche:
+
+- una riga di `SUBTOTALE` dopo ogni azienda erogatrice;
+- una riga finale di `TOTALE GENERALE`.
+
+Translator aziende erogatrici:
+
+- `201` -> `180201 - ASP COSENZA`
+- `202` -> `180202 - ASP CROTONE`
+- `203` -> `180203 - ASP CATANZARO`
+- `204` -> `180204 - ASP VIBO VALENTIA`
+- `205` -> `180205 - ASP REGGIO CALABRIA`
+- `912` -> `912 - AO ANNUNZIATA - COSENZA`
+- `914` -> `914 - AOU RENATO DULBECCO - CATANZARO`
+- `915` -> `915 - AO BIANCHI MELACRINO MORELLI GOM - REGGIO CALABRIA`
+- `916` -> `916 - INRCA`
+
+Le righe vengono prodotte accoppiando per ogni controparte:
+
+- importi farmaceutica
+- prestazioni farmaceutica
+- importi somm. diretta di farmaci
+- prestazioni somm. diretta di farmaci
+
+### File principali del verticale
+
+- `mobilita_verticale/mobilita_report.py`
+  logica di validazione input, parsing CSV, normalizzazione numeri, ordinamento, scrittura Excel e controllo importi input/output.
+- `mobilita_verticale/mobilita_gui.py`
+  GUI del verticale con selezione cartella, output, validazione e lancio report.
+- `mobilita_gui.py`
+  launcher standalone del verticale.
+
+## Verticale SIAD
 
 ## Obiettivo
 

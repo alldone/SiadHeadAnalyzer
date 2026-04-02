@@ -1,20 +1,67 @@
-# Report SIAD
+# SiadHeadAnalyzer
 
-Applicazione desktop Python per analizzare i flussi `SIAD` a partire dai due tracciati XML/XSD, costruire riepiloghi per azienda e produrre un report Excel strutturato, leggibile e pronto per la verifica operativa.
+Suite desktop Python con piu verticali operative: `SIAD`, `Specialistica`, `Mobilita Farmaci` e `SIND Detenuti`.
 
 ## Verticali nel repo
 
-Il repository ospita due verticali distinti, orchestrati da un launcher unico:
+Il repository ospita piu verticali distinti, orchestrati da un launcher unico:
 
 - `main_gui.py`
-  launcher principale con ribbon e tab `Home`, `SIAD`, `Specialistica`
+  launcher principale con ribbon e tab `Home`, `SIAD`, `Specialistica`, `Mobilita Farmaci`, `SIND Detenuti`
 
 - `siad_report_gui.py`
   verticale desktop standalone `SIAD`
 - `specialistica_gui.py`
   verticale desktop standalone `Specialistica`
+- `mobilita_gui.py`
+  verticale desktop standalone `Mobilita Farmaci`
 
-Il verticale `Specialistica` vive nella cartella `specialistica_verticale/` ed e' separato dal codice `SIAD`.
+I verticali separati vivono nelle rispettive cartelle dedicate e condividono solo il launcher principale.
+
+## Verticale Mobilita Farmaci
+
+Il verticale `Mobilita Farmaci` lavora su due cartelle selezionate separatamente: `attiva` e `passiva`.
+
+Per ogni azienda erogatrice, ricavata dal nome file (`201 importi.csv`, `201 prestazioni.csv`, ecc.), il programma:
+
+- abbina `importi` e `prestazioni` dentro ciascuna delle due cartelle;
+- preserva nel report la prima colonna sorgente (`ASL` per attiva, `AZIENDA SANITARIA CREDITRICE` per passiva);
+- permette di scegliere da listbox le tipologie da riportare negli sheet;
+- seleziona di default `FARMACEUTICA` e `SOMM. DIRETTA DI FARMACI`;
+- interpreta i numeri nel formato italiano (`.` migliaia, `,` decimali);
+- genera un workbook Excel con due fogli: `attiva` e `passiva`;
+- esegue sempre un controllo automatico degli importi tra input CSV e output Excel.
+
+Colonne del report:
+
+- `AZIENDA EROGATRICE`
+- `AZIENDA SANITARIA DEBITRICE` per il foglio `attiva`
+- `AZIENDA SANITARIA CREDITRICE` per il foglio `passiva`
+- `FARMACEUTICA - IMPORTI`
+- `FARMACEUTICA - PRESTAZIONI`
+- `SOMM. DIRETTA DI FARMACI - IMPORTI`
+- `SOMM. DIRETTA DI FARMACI - PRESTAZIONI`
+
+Ogni foglio include anche:
+
+- una riga di `SUBTOTALE` dopo ogni blocco di azienda erogatrice;
+- una riga finale di `TOTALE GENERALE`.
+
+Translator aziende erogatrici:
+
+- `201` -> `180201 - ASP COSENZA`
+- `202` -> `180202 - ASP CROTONE`
+- `203` -> `180203 - ASP CATANZARO`
+- `204` -> `180204 - ASP VIBO VALENTIA`
+- `205` -> `180205 - ASP REGGIO CALABRIA`
+- `912` -> `912 - AO ANNUNZIATA - COSENZA`
+- `914` -> `914 - AOU RENATO DULBECCO - CATANZARO`
+- `915` -> `915 - AO BIANCHI MELACRINO MORELLI GOM - REGGIO CALABRIA`
+- `916` -> `916 - INRCA`
+
+Ordinamento aziende erogatrici:
+
+- `201`, `202`, `203`, `204`, `205`, `912`, `914`, `915`, `916`
 
 ## Cosa fa
 
@@ -164,6 +211,12 @@ git push origin v1.0.0
   verticale standalone `SIAD`
 - `specialistica_gui.py`
   verticale standalone `Specialistica`
+- `mobilita_gui.py`
+  verticale standalone `Mobilita Farmaci`
+- `mobilita_verticale/`
+  codice del verticale `Mobilita Farmaci`
+- `sind_verticale/`
+  codice del verticale `SIND Detenuti`
 - `requirements.txt`
   dipendenze runtime
 - `requirements-dev.txt`

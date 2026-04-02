@@ -8,8 +8,10 @@ import subprocess
 import sys
 from typing import Any
 
+from mobilita_verticale.mobilita_gui import MobilitaGuiApp
 from siad_report_gui import SiadReportApp
 from specialistica_verticale.specialistica_gui import SpecialisticaGuiApp
+from sind_verticale.sind_gui import SindGuiApp
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -39,8 +41,10 @@ class ToolSuiteApp:
         self.root.minsize(1240, 820)
 
         self.status_var = self.tk.StringVar(value="Seleziona il verticale da usare dal ribbon o dalle tab.")
+        self.mobilita_app: MobilitaGuiApp | None = None
         self.siad_app: SiadReportApp | None = None
         self.specialistica_app: SpecialisticaGuiApp | None = None
+        self.sind_app: SindGuiApp | None = None
 
         self._build_ui()
 
@@ -63,6 +67,7 @@ class ToolSuiteApp:
         ribbon.columnconfigure(0, weight=1)
         ribbon.columnconfigure(1, weight=1)
         ribbon.columnconfigure(2, weight=1)
+        ribbon.columnconfigure(3, weight=1)
 
         self._build_ribbon_group(
             ribbon,
@@ -72,6 +77,8 @@ class ToolSuiteApp:
                 ("Home", self.show_home),
                 ("SIAD", self.show_siad),
                 ("Specialistica", self.show_specialistica),
+                ("Mobilita Farmaci", self.show_mobilita),
+                ("SIND Detenuti", self.show_sind),
             ],
         )
         self._build_ribbon_group(
@@ -81,6 +88,8 @@ class ToolSuiteApp:
             [
                 ("Apri SIAD", self.show_siad),
                 ("Apri Specialistica", self.show_specialistica),
+                ("Apri Mobilita", self.show_mobilita),
+                ("Apri SIND", self.show_sind),
             ],
         )
         self._build_ribbon_group(
@@ -100,9 +109,13 @@ class ToolSuiteApp:
         self.home_tab = self.ttk.Frame(self.notebook, padding=20)
         self.siad_tab = self.ttk.Frame(self.notebook)
         self.specialistica_tab = self.ttk.Frame(self.notebook)
+        self.mobilita_tab = self.ttk.Frame(self.notebook)
+        self.sind_tab = self.ttk.Frame(self.notebook)
         self.notebook.add(self.home_tab, text="Home")
         self.notebook.add(self.siad_tab, text="SIAD")
         self.notebook.add(self.specialistica_tab, text="Specialistica")
+        self.notebook.add(self.mobilita_tab, text="Mobilita Farmaci")
+        self.notebook.add(self.sind_tab, text="SIND Detenuti")
 
         self._build_home_tab()
 
@@ -118,6 +131,8 @@ class ToolSuiteApp:
         file_menu.add_command(label="Home", command=self.show_home)
         file_menu.add_command(label="SIAD", command=self.show_siad)
         file_menu.add_command(label="Specialistica", command=self.show_specialistica)
+        file_menu.add_command(label="Mobilita Farmaci", command=self.show_mobilita)
+        file_menu.add_command(label="SIND Detenuti", command=self.show_sind)
         file_menu.add_separator()
         file_menu.add_command(label="Esci", command=self.root.destroy)
         menu.add_cascade(label="File", menu=file_menu)
@@ -139,13 +154,15 @@ class ToolSuiteApp:
     def _build_home_tab(self) -> None:
         self.home_tab.columnconfigure(0, weight=1)
         self.home_tab.columnconfigure(1, weight=1)
+        self.home_tab.columnconfigure(2, weight=1)
+        self.home_tab.columnconfigure(3, weight=1)
 
         intro = (
             "Seleziona il verticale operativo da usare. "
-            "La codebase resta separata: SIAD e Specialistica condividono solo questo launcher."
+            "Ogni verticale ha la propria codebase separata e condivide solo questo launcher."
         )
         self.ttk.Label(self.home_tab, text=intro, wraplength=1200, justify="left").grid(
-            row=0, column=0, columnspan=2, sticky="w", pady=(0, 18)
+            row=0, column=0, columnspan=4, sticky="w", pady=(0, 18)
         )
 
         self._build_tool_card(
@@ -163,6 +180,22 @@ class ToolSuiteApp:
             "Specialistica",
             "Preparazione ETL, trascodifica prestazioni, report anomalie e validazione output.",
             self.show_specialistica,
+        )
+        self._build_tool_card(
+            self.home_tab,
+            1,
+            2,
+            "Mobilita Farmaci",
+            "Report Excel a due fogli della mobilita infraregionale per FARMACEUTICA e SOMM. DIRETTA DI FARMACI.",
+            self.show_mobilita,
+        )
+        self._build_tool_card(
+            self.home_tab,
+            1,
+            3,
+            "SIND Detenuti",
+            "Estrazione detenuti tossicodipendenti dai flussi SIND per Relazione al Parlamento.",
+            self.show_sind,
         )
 
     def _build_tool_card(
@@ -194,6 +227,16 @@ class ToolSuiteApp:
         self.notebook.select(self.specialistica_tab)
         self.status_var.set("Verticale Specialistica attivo.")
 
+    def show_mobilita(self) -> None:
+        self._ensure_app_loaded("mobilita")
+        self.notebook.select(self.mobilita_tab)
+        self.status_var.set("Verticale Mobilita Farmaci attivo.")
+
+    def show_sind(self) -> None:
+        self._ensure_app_loaded("sind")
+        self.notebook.select(self.sind_tab)
+        self.status_var.set("Verticale SIND Detenuti attivo.")
+
     def _on_tab_changed(self, _event: Any) -> None:
         selected = self.notebook.select()
         if selected == str(self.siad_tab):
@@ -202,6 +245,12 @@ class ToolSuiteApp:
         elif selected == str(self.specialistica_tab):
             self._ensure_app_loaded("specialistica")
             self.status_var.set("Verticale Specialistica attivo.")
+        elif selected == str(self.mobilita_tab):
+            self._ensure_app_loaded("mobilita")
+            self.status_var.set("Verticale Mobilita Farmaci attivo.")
+        elif selected == str(self.sind_tab):
+            self._ensure_app_loaded("sind")
+            self.status_var.set("Verticale SIND Detenuti attivo.")
         else:
             self.status_var.set("Home attiva.")
 
@@ -227,6 +276,32 @@ class ToolSuiteApp:
                 self.messagebox,
                 self.scrolledtext,
                 parent=self.specialistica_tab,
+                embed_mode=True,
+            )
+            return
+
+        if tool_name == "mobilita" and self.mobilita_app is None:
+            self.mobilita_app = MobilitaGuiApp(
+                self.root,
+                self.tk,
+                self.ttk,
+                self.filedialog,
+                self.messagebox,
+                self.scrolledtext,
+                parent=self.mobilita_tab,
+                embed_mode=True,
+            )
+            return
+
+        if tool_name == "sind" and self.sind_app is None:
+            self.sind_app = SindGuiApp(
+                self.root,
+                self.tk,
+                self.ttk,
+                self.filedialog,
+                self.messagebox,
+                self.scrolledtext,
+                parent=self.sind_tab,
                 embed_mode=True,
             )
 
