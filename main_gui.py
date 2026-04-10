@@ -8,6 +8,8 @@ import subprocess
 import sys
 from typing import Any
 
+from far_recon_verticale.far_recon_gui import FarReconApp
+from far_verticale.far_d33za_gui import FarD33ZaApp
 from mobilita_verticale.mobilita_gui import MobilitaGuiApp
 from siad_report_gui import SiadReportApp
 from specialistica_verticale.specialistica_gui import SpecialisticaGuiApp
@@ -41,6 +43,8 @@ class ToolSuiteApp:
         self.root.minsize(1240, 820)
 
         self.status_var = self.tk.StringVar(value="Seleziona il verticale da usare dal ribbon o dalle tab.")
+        self.far_app: FarD33ZaApp | None = None
+        self.far_recon_app: FarReconApp | None = None
         self.mobilita_app: MobilitaGuiApp | None = None
         self.siad_app: SiadReportApp | None = None
         self.specialistica_app: SpecialisticaGuiApp | None = None
@@ -76,6 +80,8 @@ class ToolSuiteApp:
             [
                 ("Home", self.show_home),
                 ("SIAD", self.show_siad),
+                ("FAR D33Za", self.show_far),
+                ("FAR Recon", self.show_far_recon),
                 ("Specialistica", self.show_specialistica),
                 ("Mobilita Farmaci", self.show_mobilita),
                 ("SIND Detenuti", self.show_sind),
@@ -87,6 +93,8 @@ class ToolSuiteApp:
             "Avvio Rapido",
             [
                 ("Apri SIAD", self.show_siad),
+                ("Apri FAR", self.show_far),
+                ("Apri FAR Recon", self.show_far_recon),
                 ("Apri Specialistica", self.show_specialistica),
                 ("Apri Mobilita", self.show_mobilita),
                 ("Apri SIND", self.show_sind),
@@ -108,11 +116,15 @@ class ToolSuiteApp:
 
         self.home_tab = self.ttk.Frame(self.notebook, padding=20)
         self.siad_tab = self.ttk.Frame(self.notebook)
+        self.far_tab = self.ttk.Frame(self.notebook)
+        self.far_recon_tab = self.ttk.Frame(self.notebook)
         self.specialistica_tab = self.ttk.Frame(self.notebook)
         self.mobilita_tab = self.ttk.Frame(self.notebook)
         self.sind_tab = self.ttk.Frame(self.notebook)
         self.notebook.add(self.home_tab, text="Home")
         self.notebook.add(self.siad_tab, text="SIAD")
+        self.notebook.add(self.far_tab, text="FAR D33Za")
+        self.notebook.add(self.far_recon_tab, text="FAR Recon")
         self.notebook.add(self.specialistica_tab, text="Specialistica")
         self.notebook.add(self.mobilita_tab, text="Mobilita Farmaci")
         self.notebook.add(self.sind_tab, text="SIND Detenuti")
@@ -130,6 +142,8 @@ class ToolSuiteApp:
         file_menu = self.tk.Menu(menu, tearoff=False)
         file_menu.add_command(label="Home", command=self.show_home)
         file_menu.add_command(label="SIAD", command=self.show_siad)
+        file_menu.add_command(label="FAR D33Za", command=self.show_far)
+        file_menu.add_command(label="FAR Recon", command=self.show_far_recon)
         file_menu.add_command(label="Specialistica", command=self.show_specialistica)
         file_menu.add_command(label="Mobilita Farmaci", command=self.show_mobilita)
         file_menu.add_command(label="SIND Detenuti", command=self.show_sind)
@@ -156,13 +170,15 @@ class ToolSuiteApp:
         self.home_tab.columnconfigure(1, weight=1)
         self.home_tab.columnconfigure(2, weight=1)
         self.home_tab.columnconfigure(3, weight=1)
+        self.home_tab.columnconfigure(4, weight=1)
+        self.home_tab.columnconfigure(5, weight=1)
 
         intro = (
             "Seleziona il verticale operativo da usare. "
             "Ogni verticale ha la propria codebase separata e condivide solo questo launcher."
         )
         self.ttk.Label(self.home_tab, text=intro, wraplength=1200, justify="left").grid(
-            row=0, column=0, columnspan=4, sticky="w", pady=(0, 18)
+            row=0, column=0, columnspan=6, sticky="w", pady=(0, 18)
         )
 
         self._build_tool_card(
@@ -177,6 +193,22 @@ class ToolSuiteApp:
             self.home_tab,
             1,
             1,
+            "FAR D33Za",
+            "Indicatore NSG D33Za sui flussi FAR: over 75 residenti, livelli R1/R2/R3 e deduplica sulla massima intensita.",
+            self.show_far,
+        )
+        self._build_tool_card(
+            self.home_tab,
+            1,
+            2,
+            "FAR Recon",
+            "Riconciliazione NSIS/SISR flussi FAR: conteggio record T1/T2, scarti per trimestre, proiezione post-upload con chiavi § 4.3.",
+            self.show_far_recon,
+        )
+        self._build_tool_card(
+            self.home_tab,
+            1,
+            3,
             "Specialistica",
             "Preparazione ETL, trascodifica prestazioni, report anomalie e validazione output.",
             self.show_specialistica,
@@ -184,7 +216,7 @@ class ToolSuiteApp:
         self._build_tool_card(
             self.home_tab,
             1,
-            2,
+            4,
             "Mobilita Farmaci",
             "Report Excel a due fogli della mobilita infraregionale per FARMACEUTICA e SOMM. DIRETTA DI FARMACI.",
             self.show_mobilita,
@@ -192,7 +224,7 @@ class ToolSuiteApp:
         self._build_tool_card(
             self.home_tab,
             1,
-            3,
+            5,
             "SIND Detenuti",
             "Estrazione detenuti tossicodipendenti dai flussi SIND per Relazione al Parlamento.",
             self.show_sind,
@@ -222,6 +254,16 @@ class ToolSuiteApp:
         self.notebook.select(self.siad_tab)
         self.status_var.set("Verticale SIAD attivo.")
 
+    def show_far(self) -> None:
+        self._ensure_app_loaded("far")
+        self.notebook.select(self.far_tab)
+        self.status_var.set("Verticale FAR D33Za attivo.")
+
+    def show_far_recon(self) -> None:
+        self._ensure_app_loaded("far_recon")
+        self.notebook.select(self.far_recon_tab)
+        self.status_var.set("Verticale FAR Recon attivo.")
+
     def show_specialistica(self) -> None:
         self._ensure_app_loaded("specialistica")
         self.notebook.select(self.specialistica_tab)
@@ -242,6 +284,12 @@ class ToolSuiteApp:
         if selected == str(self.siad_tab):
             self._ensure_app_loaded("siad")
             self.status_var.set("Verticale SIAD attivo.")
+        elif selected == str(self.far_tab):
+            self._ensure_app_loaded("far")
+            self.status_var.set("Verticale FAR D33Za attivo.")
+        elif selected == str(self.far_recon_tab):
+            self._ensure_app_loaded("far_recon")
+            self.status_var.set("Verticale FAR Recon attivo.")
         elif selected == str(self.specialistica_tab):
             self._ensure_app_loaded("specialistica")
             self.status_var.set("Verticale Specialistica attivo.")
@@ -263,6 +311,32 @@ class ToolSuiteApp:
                 self.filedialog,
                 self.messagebox,
                 parent=self.siad_tab,
+                embed_mode=True,
+            )
+            return
+
+        if tool_name == "far" and self.far_app is None:
+            self.far_app = FarD33ZaApp(
+                self.root,
+                self.tk,
+                self.ttk,
+                self.filedialog,
+                self.messagebox,
+                self.scrolledtext,
+                parent=self.far_tab,
+                embed_mode=True,
+            )
+            return
+
+        if tool_name == "far_recon" and self.far_recon_app is None:
+            self.far_recon_app = FarReconApp(
+                self.root,
+                self.tk,
+                self.ttk,
+                self.filedialog,
+                self.messagebox,
+                self.scrolledtext,
+                parent=self.far_recon_tab,
                 embed_mode=True,
             )
             return

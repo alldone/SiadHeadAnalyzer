@@ -10,6 +10,7 @@ Il verticale:
 
 - acquisisce separatamente la cartella `attiva` e la cartella `passiva`;
 - abbina per ogni azienda erogatrice i file `<codice> importi.csv` e `<codice> prestazioni.csv`;
+- riconosce i file a partire dal codice azienda iniziale nel filename, con deduzione intelligente di `importi` o `prestazioni` dal nome e fallback sul contenuto del CSV;
 - usa una listbox multi-selezione per scegliere le colonne da riportare;
 - di default seleziona `FARMACEUTICA` e `SOMM. DIRETTA DI FARMACI`;
 - scrive un workbook Excel con due fogli: `attiva` e `passiva`;
@@ -314,6 +315,50 @@ git push origin v1.0.1
 ```
 
 Se vuoi lanciare la build senza tag, puoi usare anche `workflow_dispatch` dalla pagina Actions di GitHub, ma in quel caso gli artifact vengono caricati come artifact della workflow e non come release assets, salvo pubblicazione da tag.
+
+## Verticale FAR Recon (Riconciliazione NSIS / SISR)
+
+### Obiettivo
+
+Verticale dedicato alla riconciliazione tra dati FAR gia' acquisiti su NSIS e nuovi flussi SISR per le 5 ASP calabresi (201..205). Produce un report Excel con conteggi T1/T2, scarti, delta validi e proiezione post-upload.
+
+### Regole di conteggio (DM 17/12/2008, Specifiche FAR v6.3)
+
+- **Tracciato 1**: 1 record = 1 wrapper `<FlsResSemires_1>`.
+  Chiave NSIS: `(CodASL, CodStruttura, ID_REC, Data, TipoPrestazione)`.
+
+- **Tracciato 2**: 1 record = 1 evento (Tariffa, PrestazioniSR, Valutazione, Sospensione, Dimissione).
+  Conteggio rapido: conta occorrenze tag XML (non dedup).
+  Conteggio NSIS § 4.3 (dedup per chiave-evento):
+    - Tariffa: `(CodASL, CodStruttura, ID_REC, "Tariffa", Data)`
+    - PrestazioniSR: `(CodASL, CodStruttura, ID_REC, "PrestazioniSR", TempoPieno, TempoParziale)`
+    - Valutazione: `(CodASL, CodStruttura, ID_REC, "Valutazione", Tipo, Data)`
+    - Sospensione: `(CodASL, CodStruttura, ID_REC, "Sospensione", Data, DataFine)`
+    - Dimissione: `(CodASL, CodStruttura, ID_REC, "Dimissione", Data)`
+
+- **Scarti SISR**: conteggio righe FLAG_OK_KO per Azienda x Trimestre x Tracciato (logica Nicoletta — NO dedup globale per id_rec).
+
+- **Proiezione post-upload**: unione delle chiavi NSIS § 4.3 tra acquisiti e nuovi, con calcolo overlap reale.
+
+### File del verticale
+
+- `far_recon_verticale/__init__.py`
+- `far_recon_verticale/far_recon_core.py` — logica pura: scansione, parsing, chiavi NSIS, scarti, proiezione, export xlsx.
+- `far_recon_verticale/far_recon_gui.py` — GUI `FarReconApp` (tkinter, embed_mode).
+- `far_recon_gui.py` — launcher standalone.
+
+### Sheet prodotti nel workbook
+
+1. `acquisiti_NSIS` — conteggio rapido T1/T2 per azienda (se cartella fornita).
+2. `nuovi_FLUSSI` — conteggio rapido T1/T2 per azienda + colonna netto scarti.
+3. `scarti_nuovi_FLUSSI` — scarti dedup globale per id_rec.
+4. `delta_validi` — inviati - scartati = validi per T1, T2 eventi, T2 id_rec, T2 wrapper.
+5. `scarti_per_trimestre` — KO/OK/Totale per Azienda x Trimestre x Tracciato.
+6. `proiezione_post_upload` — NSIS attuale + veri nuovi = post-upload (chiavi § 4.3).
+
+### Dipendenza aggiuntiva
+
+- `xlrd>=1.2,<3` (lettura report scarti `.xls`).
 
 ## Note operative
 

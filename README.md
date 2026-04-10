@@ -1,22 +1,53 @@
 # SiadHeadAnalyzer
 
-Suite desktop Python con piu verticali operative: `SIAD`, `Specialistica`, `Mobilita Farmaci` e `SIND Detenuti`.
+Suite desktop Python con piu verticali operative: `SIAD`, `FAR D33Za`, `Specialistica`, `Mobilita Farmaci` e `SIND Detenuti`.
 
 ## Verticali nel repo
 
 Il repository ospita piu verticali distinti, orchestrati da un launcher unico:
 
 - `main_gui.py`
-  launcher principale con ribbon e tab `Home`, `SIAD`, `Specialistica`, `Mobilita Farmaci`, `SIND Detenuti`
+  launcher principale con ribbon e tab `Home`, `SIAD`, `FAR D33Za`, `Specialistica`, `Mobilita Farmaci`, `SIND Detenuti`
 
 - `siad_report_gui.py`
   verticale desktop standalone `SIAD`
+- `far_d33za_gui.py`
+  verticale desktop standalone `FAR D33Za`
 - `specialistica_gui.py`
   verticale desktop standalone `Specialistica`
 - `mobilita_gui.py`
   verticale desktop standalone `Mobilita Farmaci`
 
 I verticali separati vivono nelle rispettive cartelle dedicate e condividono solo il launcher principale.
+
+## Verticale FAR D33Za
+
+Il verticale `FAR D33Za` legge ricorsivamente i file `FAR*.xml` e calcola l'indicatore NSG:
+
+- assistiti residenti con eta `>=75` anni;
+- trattamenti residenziali `R1`, `R2`, `R3`;
+- conteggio una sola volta nell'anno per paziente;
+- attribuzione del paziente al livello di intensita piu elevato, come previsto dalla scheda `D33Za`.
+- uso dei `txt` di anagrafe assistiti come fonte del denominatore e come lookup per residenza/eta, soprattutto sul `Tracciato 2`.
+
+Il report Excel prodotto contiene:
+
+- `D33Za_Riepilogo`
+  riepilogo per `ASL Residenza` con popolazione residente `>=75`, numeratori e indicatori `x1000`
+- `Dettaglio`
+  tutte le righe FAR valutate, con motivo di inclusione o esclusione
+- `Assistiti_Selezionati`
+  un record finale per ogni assistito conteggiato nell'indicatore
+- `Popolazione_Anagrafe`
+  denominatore `>=75` per azienda sanitaria ricavato dai `txt`
+- `Verifica_Tracciati`
+  conteggi di controllo per `Tracciato 1` e `Tracciato 2`
+
+Nota operativa:
+
+- il `Tracciato 1` usa i dati FAR e, se disponibili, li integra con anagrafe;
+- il `Tracciato 2` ricava residenza ed eta tramite il collegamento tra `ID_REC` e codice fiscale anagrafico;
+- il denominatore dell'indicatore e' la popolazione residente `>=75` ricavata dai file `Export_Assistiti_*.txt`.
 
 ## Verticale Mobilita Farmaci
 
@@ -25,6 +56,9 @@ Il verticale `Mobilita Farmaci` lavora su due cartelle selezionate separatamente
 Per ogni azienda erogatrice, ricavata dal nome file (`201 importi.csv`, `201 prestazioni.csv`, ecc.), il programma:
 
 - abbina `importi` e `prestazioni` dentro ciascuna delle due cartelle;
+- riconosce i file in modo intelligente:
+  parte sempre dal codice azienda iniziale nel nome file, poi deduce `importi` o `prestazioni`
+  dai token del filename e, se necessario, dal contenuto numerico del CSV;
 - preserva nel report la prima colonna sorgente (`ASL` per attiva, `AZIENDA SANITARIA CREDITRICE` per passiva);
 - permette di scegliere da listbox le tipologie da riportare negli sheet;
 - seleziona di default `FARMACEUTICA` e `SOMM. DIRETTA DI FARMACI`;
@@ -209,10 +243,14 @@ git push origin v1.0.0
   launcher principale della suite
 - `siad_report_gui.py`
   verticale standalone `SIAD`
+- `far_d33za_gui.py`
+  verticale standalone `FAR D33Za`
 - `specialistica_gui.py`
   verticale standalone `Specialistica`
 - `mobilita_gui.py`
   verticale standalone `Mobilita Farmaci`
+- `far_verticale/`
+  codice del verticale `FAR D33Za`
 - `mobilita_verticale/`
   codice del verticale `Mobilita Farmaci`
 - `sind_verticale/`

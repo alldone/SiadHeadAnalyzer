@@ -28,7 +28,7 @@ EROGATRICE_LABELS = {
     "915": "915 - AO BIANCHI MELACRINO MORELLI GOM - REGGIO CALABRIA",
     "916": "916 - INRCA",
 }
-FILE_STEM_RE = re.compile(r"^(?P<code>\d+)\s+(?P<kind>importi|prestazioni)$", re.IGNORECASE)
+LEADING_CODE_RE = re.compile(r"^\s*(?P<code>\d+)")
 HEADER_FARMACEUTICA = "FARMACEUTICA"
 HEADER_SOMM_DIRETTA = "SOMM. DIRETTA DI FARMACI"
 THIN_BORDER = Border(
@@ -64,6 +64,10 @@ COLUMN_DEFINITIONS = (
 )
 COLUMN_DEFINITION_BY_KEY = {definition.key: definition for definition in COLUMN_DEFINITIONS}
 DEFAULT_SELECTED_COLUMN_KEYS = ("farmaceutica", "somm_diretta_farmaci")
+FILE_KIND_KEYWORDS = {
+    "importi": ("IMPORTI", "IMPORTO", "ECONOMICI", "ECONOMICO", "VALORE", "VALORI"),
+    "prestazioni": ("PRESTAZIONI", "PRESTAZIONE", "VOLUMI", "VOLUME", "QUANTITA", "NUMERO PRESTAZIONI", "N PRESTAZIONI"),
+}
 
 
 @dataclass(frozen=True)
@@ -156,6 +160,73 @@ def display_counterparty_header(header: str) -> str:
     if normalize_header(header) == "ASL":
         return "AZIENDA SANITARIA DEBITRICE"
     return header
+
+
+def normalize_filename_text(value: str) -> str:
+    return re.sub(r"\s+", " ", re.sub(r"[^0-9A-Z]+", " ", value.upper())).strip()
+
+
+def infer_kind_from_name(stem: str) -> str | None:
+    code_match = LEADING_CODE_RE.match(stem)
+    tail = stem[code_match.end():] if code_match else stem
+    normalized_tail = normalize_filename_text(tail)
+    if not normalized_tail:
+        return None
+
+    matched_kinds = [
+        kind
+        for kind, keywords in FILE_KIND_KEYWORDS.items()
+        if any(keyword in normalized_tail for keyword in keywords)
+    ]
+    if len(matched_kinds) == 1:
+        return matched_kinds[0]
+    return None
+
+
+def infer_kind_from_content(path: Path) -> str | None:
+    header, rows = read_csv_file(path)
+    sample_rows = rows[:10]
+    seen_numeric = False
+    seen_decimal_comma = False
+
+    for row in sample_rows:
+        padded_row = row + [""] * (len(header) - len(row))
+        for cell in padded_row[1:]:
+            value = cell.strip()
+            if not value:
+                continue
+            compact = value.replace(".", "").replace(",", "")
+            if not compact.isdigit():
+                continue
+            seen_numeric = True
+            if "," in value:
+                seen_decimal_comma = True
+                break
+        if seen_decimal_comma:
+            break
+
+    if seen_decimal_comma:
+        return "importi"
+    if seen_numeric:
+        return "prestazioni"
+    return None
+
+
+def detect_file_code_and_kind(path: Path) -> tuple[str, str]:
+    stem = path.stem.strip()
+    code_match = LEADING_CODE_RE.match(stem)
+    if code_match is None:
+        raise ValueError(f"{path.name}: nome file non riconosciuto, manca il codice azienda iniziale.")
+
+    code = code_match.group("code")
+    kind = infer_kind_from_name(stem)
+    if kind is None:
+        kind = infer_kind_from_content(path)
+    if kind is None:
+        raise ValueError(
+            f"{path.name}: impossibile determinare se il file contiene importi o prestazioni."
+        )
+    return code, kind
 
 
 def next_output_path(base_dir: Path, stem: str = "report_mobilita_farmaci", ext: str = ".xlsx") -> Path:
@@ -253,12 +324,11 @@ def collect_flow_pairs(flow_dir: Path) -> tuple[dict[str, dict[str, Path]], list
     for path in sorted(flow_dir.iterdir()):
         if not path.is_file() or path.suffix.lower() != ".csv":
             continue
-        match = FILE_STEM_RE.match(path.stem.strip())
-        if match is None:
-            invalid_files.append(path.name)
+        try:
+            code, kind = detect_file_code_and_kind(path)
+        except ValueError as exc:
+            invalid_files.append(str(exc))
             continue
-        code = match.group("code")
-        kind = match.group("kind").lower()
         pairs.setdefault(code, {})
         if kind in pairs[code]:
             raise ValueError(f"File duplicato per {flow_dir.name} {code} {kind}: {path.name}")
