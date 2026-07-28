@@ -92,9 +92,9 @@ class FarReconApp:
         self._build_ribbon_group(
             ribbon, 0, "Percorsi",
             [
-                ("Acquisiti NSIS", self.choose_nsis_dir),
-                ("Nuovi FLUSSI", self.choose_nuovi_dir),
+                ("Presenti NSIS", self.choose_nsis_dir),
                 ("Scarti SISR", self.choose_scarti_dir),
+                ("Nuovi FLUSSI", self.choose_nuovi_dir),
                 ("File output", self.choose_output_file),
             ],
         )
@@ -112,16 +112,16 @@ class FarReconApp:
         path_frame.grid(row=1, column=0, sticky="ew", pady=(12, 8))
         path_frame.columnconfigure(1, weight=1)
 
-        self._add_path_row(path_frame, 0, "Acquisiti NSIS", self.nsis_dir_var, self.choose_nsis_dir)
-        self._add_path_row(path_frame, 1, "Nuovi FLUSSI", self.nuovi_dir_var, self.choose_nuovi_dir)
-        self._add_path_row(path_frame, 2, "Scarti SISR (opz.)", self.scarti_dir_var, self.choose_scarti_dir)
+        self._add_path_row(path_frame, 0, "Presenti NSIS", self.nsis_dir_var, self.choose_nsis_dir)
+        self._add_path_row(path_frame, 1, "Scarti SISR", self.scarti_dir_var, self.choose_scarti_dir)
+        self._add_path_row(path_frame, 2, "Nuovi FLUSSI", self.nuovi_dir_var, self.choose_nuovi_dir)
         self._add_path_row(path_frame, 3, "File Excel output", self.output_file_var, self.choose_output_file, file_mode=True)
 
         hint = (
-            "Acquisiti NSIS: cartella con XML/zip gia' acquisiti. "
-            "Nuovi FLUSSI: cartella con XML del nuovo invio (scarti in sottocartella 'scarti/'). "
-            "Se entrambe presenti viene calcolata la proiezione post-upload con chiavi NSIS § 4.3. "
-            "La cartella scarti SISR viene dedotta automaticamente da nuovi_FLUSSI/scarti/ se non specificata."
+            "Presenti NSIS: cartella con XML/zip gia' acquisiti su NSIS. "
+            "Scarti SISR: cartella con report .xls/.zip degli scarti SISR. "
+            "Nuovi FLUSSI: cartella con XML del nuovo invio da caricare. "
+            "Se presenti NSIS + nuovi FLUSSI viene calcolata la proiezione post-upload (chiavi NSIS § 4.3)."
         )
         self.ttk.Label(frame, text=hint, wraplength=1260, justify="left").grid(row=2, column=0, sticky="ew", pady=(0, 8))
 
@@ -146,9 +146,9 @@ class FarReconApp:
         menu = self.tk.Menu(self.root)
 
         file_menu = self.tk.Menu(menu, tearoff=False)
-        file_menu.add_command(label="Acquisiti NSIS...", command=self.choose_nsis_dir)
-        file_menu.add_command(label="Nuovi FLUSSI...", command=self.choose_nuovi_dir)
+        file_menu.add_command(label="Presenti NSIS...", command=self.choose_nsis_dir)
         file_menu.add_command(label="Scarti SISR...", command=self.choose_scarti_dir)
+        file_menu.add_command(label="Nuovi FLUSSI...", command=self.choose_nuovi_dir)
         file_menu.add_command(label="File output...", command=self.choose_output_file)
         file_menu.add_separator()
         file_menu.add_command(label="Esci", command=self.root.destroy)
@@ -218,10 +218,6 @@ class FarReconApp:
         path = self.filedialog.askdirectory(initialdir=self.nuovi_dir_var.get() or str(Path.home()))
         if path:
             self.nuovi_dir_var.set(path)
-            # auto-detect scarti subfolder
-            scarti_candidate = os.path.join(path, "scarti")
-            if os.path.isdir(scarti_candidate) and not self.scarti_dir_var.get().strip():
-                self.scarti_dir_var.set(scarti_candidate)
             if not self.output_file_var.get().strip():
                 self.output_file_var.set(str(self._next_output_path(Path(path).parent)))
             self._save_state()

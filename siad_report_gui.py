@@ -39,9 +39,37 @@ MONTH_CODES = {
 }
 
 FEMALE_DAY_OFFSET = 40
-CF_PATTERN = re.compile(r"^[A-Z]{6}\d{2}[ABCDEHLMPRST]\d{2}[A-Z]\d{3}[A-Z]$")
+OMOCODIA_TO_DIGIT = {
+    "L": "0",
+    "M": "1",
+    "N": "2",
+    "P": "3",
+    "Q": "4",
+    "R": "5",
+    "S": "6",
+    "T": "7",
+    "U": "8",
+    "V": "9",
+}
+CF_ODD_POSITION_VALUES = dict(
+    zip(
+        "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        [1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 2, 4, 18, 20, 11, 3, 6, 8, 12, 14, 16, 10, 22, 25, 24, 23],
+    )
+)
+CF_EVEN_POSITION_VALUES = {
+    **{str(number): number for number in range(10)},
+    **{letter: index for index, letter in enumerate("ABCDEFGHIJKLMNOPQRSTUVWXYZ")},
+}
+CF_DIGIT_OR_OMOCODIA = r"[0-9LMNPQRSTUV]"
+STANDARD_CF_PATTERN = re.compile(r"^[A-Z]{6}\d{2}[ABCDEHLMPRST]\d{2}[A-Z]\d{3}[A-Z]$")
+CF_PATTERN = re.compile(
+    rf"^[A-Z]{{6}}{CF_DIGIT_OR_OMOCODIA}{{2}}[ABCDEHLMPRST]"
+    rf"{CF_DIGIT_OR_OMOCODIA}{{2}}[A-Z]{CF_DIGIT_OR_OMOCODIA}{{3}}[A-Z]$"
+)
 XML_NS_RE = re.compile(r"^\{(?P<ns>[^}]+)\}(?P<name>.+)$")
 QUARTER_PATH_RE = re.compile(r"_(20\d{2})_([1-4])_")
+SIAD_QUARTER_RE = re.compile(r"T([1-4])[12](?:_|$)", re.IGNORECASE)
 
 
 def local_name(tag: str) -> str:
@@ -52,10 +80,16 @@ def local_name(tag: str) -> str:
 def parse_iso_date(value: str | None) -> date | None:
     if not value:
         return None
-    return datetime.strptime(value, "%Y-%m-%d").date()
+    try:
+        return datetime.strptime(value, "%Y-%m-%d").date()
+    except ValueError:
+        return None
 
 
 def quarter_from_path(relative_path: str) -> str:
+    siad_match = SIAD_QUARTER_RE.search(Path(relative_path).name)
+    if siad_match:
+        return f"T{siad_match.group(1)}"
     match = QUARTER_PATH_RE.search(relative_path)
     if match:
         return f"T{match.group(2)}"
@@ -87,8 +121,8 @@ class XmlFileInfo:
     relative_path: str
     track: int
     root_name: str
-    line_count: int
-    size_mb: float
+    line_count: int = 0
+    size_mb: float = 0.0
 
 
 @dataclass
@@ -116,6 +150,53 @@ class PatientInfo:
     resolved_year: int | None = None
     resolved_from_track1: bool = False
     ambiguous: bool = False
+
+
+@dataclass(frozen=True)
+class ExtractionIssue:
+    source_file: str
+    track: int
+    record_number: int
+    sede: str
+    id_rec: str
+    reason: str
+
+
+@dataclass
+class FileValidationResult:
+    source_file: str
+    track: int
+    errors: list[dict[str, str]]
+    execution_error: str | None = None
+
+    @property
+    def status(self) -> str:
+        if self.execution_error:
+            return "NON ESEGUITA"
+        return "NON VALIDO" if self.errors else "VALIDO"
+
+
+@dataclass(frozen=True)
+class NonstandardCfRecord:
+    source_file: str
+    track: int
+    record_number: int
+    id_rec: str
+    cf_candidate: str
+    status: str
+
+    @property
+    def extractable(self) -> bool:
+        return self.status == "OMOCODIA RICONOSCIUTA"
+
+    @property
+    def expected_control_char(self) -> str:
+        return expected_cf_control_char(self.cf_candidate) or ""
+
+    @property
+    def control_char_valid(self) -> bool:
+        expected = self.expected_control_char
+        return bool(expected and expected == self.cf_candidate[-1])
 
 
 def parse_xsd_root_name(xsd_path: Path) -> str:
@@ -165,10 +246,32 @@ def extract_cf_from_id_rec(id_rec: str) -> str | None:
     return candidate if CF_PATTERN.match(candidate) else None
 
 
+def decode_omocodia_number(value: str) -> int | None:
+    decoded = "".join(OMOCODIA_TO_DIGIT.get(char, char) for char in value.upper())
+    return int(decoded) if decoded.isdigit() else None
+
+
+def expected_cf_control_char(cf: str) -> str | None:
+    value = cf.strip().upper()
+    if len(value) != 16:
+        return None
+    total = 0
+    for position, char in enumerate(value[:15], start=1):
+        values = CF_ODD_POSITION_VALUES if position % 2 else CF_EVEN_POSITION_VALUES
+        if char not in values:
+            return None
+        total += values[char]
+    return chr(ord("A") + total % 26)
+
+
 def infer_birth_year_from_cf(cf: str) -> int | None:
-    yy = int(cf[6:8])
+    yy = decode_omocodia_number(cf[6:8])
+    if yy is None:
+        return None
     month = MONTH_CODES.get(cf[8])
-    day_code = int(cf[9:11])
+    day_code = decode_omocodia_number(cf[9:11])
+    if day_code is None:
+        return None
     if month is None:
         return None
     day = day_code - FEMALE_DAY_OFFSET if day_code > FEMALE_DAY_OFFSET else day_code
@@ -184,9 +287,13 @@ def full_year_from_two_digits(two_digits: int, century: int) -> int:
 
 
 def age_on_reference_date(cf: str, birth_year: int, reference_date: date) -> int | None:
-    yy = int(cf[6:8])
+    yy = decode_omocodia_number(cf[6:8])
+    if yy is None:
+        return None
     month = MONTH_CODES.get(cf[8])
-    day_code = int(cf[9:11])
+    day_code = decode_omocodia_number(cf[9:11])
+    if day_code is None:
+        return None
     if month is None:
         return None
     day = day_code - FEMALE_DAY_OFFSET if day_code > FEMALE_DAY_OFFSET else day_code
@@ -236,8 +343,10 @@ def resolve_patients_birth_years(track1_rows: list[dict], track2_rows: list[dict
 
 def parse_track1_assistenza(assistenza: ET.Element, source_file: str) -> dict | None:
     sede = find_text(assistenza, ["Erogatore", "CodiceASL"])
+    eventi = find_child(assistenza, "Eventi")
+    presa = find_child(eventi, "PresaInCarico") if eventi is not None else None
     id_rec = find_text(assistenza, ["Eventi", "PresaInCarico", "Id_Rec"])
-    presa_date = parse_iso_date(find_child(find_child(assistenza, "Eventi"), "PresaInCarico").attrib.get("data") if find_child(find_child(assistenza, "Eventi"), "PresaInCarico") is not None else None)
+    presa_date = parse_iso_date(presa.attrib.get("data") if presa is not None else None)
     anno_nascita_text = find_text(assistenza, ["Assistito", "DatiAnagrafici", "AnnoNascita"])
     cf = extract_cf_from_id_rec(id_rec or "")
     if not sede or not id_rec or not cf or presa_date is None:
@@ -275,10 +384,11 @@ def parse_track2_assistenza(assistenza: ET.Element, source_file: str) -> dict | 
 
 def scan_xml_files(base_dir: Path, root_to_track: dict[str, int], filename_token: str = "SIAD") -> list[XmlFileInfo]:
     results: list[XmlFileInfo] = []
-    token = filename_token.strip()
-    pattern = f"{token}*.xml" if token else "*.xml"
-    for path in sorted(base_dir.rglob(pattern)):
-        if not path.is_file():
+    token = filename_token.strip().casefold()
+    for path in sorted(base_dir.rglob("*")):
+        if not path.is_file() or path.suffix.casefold() != ".xml":
+            continue
+        if token and not path.name.casefold().startswith(token):
             continue
         track, root_name = classify_xml_file(path, root_to_track)
         results.append(
@@ -292,6 +402,64 @@ def scan_xml_files(base_dir: Path, root_to_track: dict[str, int], filename_token
             )
         )
     return results
+
+
+def build_extraction_issue(
+    assistenza: ET.Element,
+    *,
+    source_file: str,
+    track: int,
+    record_number: int,
+) -> ExtractionIssue:
+    sede = find_text(assistenza, ["Erogatore", "CodiceASL"]) or ""
+    eventi = find_child(assistenza, "Eventi")
+    presa = find_child(eventi, "PresaInCarico") if eventi is not None else None
+    id_rec = find_text(assistenza, ["Eventi", "PresaInCarico", "Id_Rec"]) or ""
+    raw_date = presa.attrib.get("data") if presa is not None else None
+    reasons: list[str] = []
+    if not sede:
+        reasons.append("CodiceASL assente o vuoto")
+    if not id_rec:
+        reasons.append("Id_Rec assente o vuoto")
+    elif extract_cf_from_id_rec(id_rec) is None:
+        reasons.append("codice fiscale finale in Id_Rec non riconosciuto, neppure come omocodia")
+    if not raw_date:
+        reasons.append("data PresaInCarico assente o vuota")
+    elif parse_iso_date(raw_date) is None:
+        reasons.append("data PresaInCarico non valida")
+    return ExtractionIssue(
+        source_file=source_file,
+        track=track,
+        record_number=record_number,
+        sede=sede,
+        id_rec=id_rec,
+        reason="; ".join(reasons) or "record non estraibile",
+    )
+
+
+def collect_nonstandard_cf_records(xml_files: list[XmlFileInfo]) -> list[NonstandardCfRecord]:
+    records: list[NonstandardCfRecord] = []
+    for file_info in xml_files:
+        root = ET.parse(file_info.path).getroot()
+        for record_number, assistenza in enumerate(iter_assistenza(root), start=1):
+            id_rec = (find_text(assistenza, ["Eventi", "PresaInCarico", "Id_Rec"]) or "").strip().upper()
+            if not id_rec:
+                continue
+            candidate = id_rec[-16:]
+            if STANDARD_CF_PATTERN.fullmatch(candidate):
+                continue
+            status = "OMOCODIA RICONOSCIUTA" if CF_PATTERN.fullmatch(candidate) else "NON RICONOSCIUTO"
+            records.append(
+                NonstandardCfRecord(
+                    source_file=file_info.relative_path,
+                    track=file_info.track,
+                    record_number=record_number,
+                    id_rec=id_rec,
+                    cf_candidate=candidate,
+                    status=status,
+                )
+            )
+    return records
 
 
 def count_file_lines(path: Path) -> int:
@@ -389,19 +557,70 @@ def validate_xml_against_xsd(xml_path: Path, xsd_path: Path) -> list[dict[str, s
         return collect_validation_errors(schema, stripped_xml_path)
 
 
-def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list[dict], list[RecordDetail], list[dict], int]:
+def validate_xml_files(
+    xml_files: list[XmlFileInfo],
+    xsd_by_track: dict[int, Path],
+) -> list[FileValidationResult]:
+    results: list[FileValidationResult] = []
+    for file_info in xml_files:
+        xsd_path = xsd_by_track.get(file_info.track)
+        if xsd_path is None:
+            results.append(
+                FileValidationResult(
+                    source_file=file_info.relative_path,
+                    track=file_info.track,
+                    errors=[],
+                    execution_error=f"XSD non configurato per il tracciato {file_info.track}",
+                )
+            )
+            continue
+        try:
+            errors = validate_xml_against_xsd(file_info.path, xsd_path)
+        except Exception as exc:
+            results.append(
+                FileValidationResult(
+                    source_file=file_info.relative_path,
+                    track=file_info.track,
+                    errors=[],
+                    execution_error=str(exc),
+                )
+            )
+            continue
+        results.append(
+            FileValidationResult(
+                source_file=file_info.relative_path,
+                track=file_info.track,
+                errors=errors,
+            )
+        )
+    return results
+
+
+def build_report(
+    xml_files: list[XmlFileInfo],
+    analysis_year: int,
+) -> tuple[list[dict], list[RecordDetail], list[dict], int, list[ExtractionIssue]]:
     track1_rows: list[dict] = []
     track2_rows: list[dict] = []
+    extraction_issues: list[ExtractionIssue] = []
 
     for file_info in xml_files:
         root = ET.parse(file_info.path).getroot()
-        for assistenza in iter_assistenza(root):
+        for record_number, assistenza in enumerate(iter_assistenza(root), start=1):
             row = (
                 parse_track1_assistenza(assistenza, file_info.relative_path)
                 if file_info.track == 1
                 else parse_track2_assistenza(assistenza, file_info.relative_path)
             )
             if row is None:
+                extraction_issues.append(
+                    build_extraction_issue(
+                        assistenza,
+                        source_file=file_info.relative_path,
+                        track=file_info.track,
+                        record_number=record_number,
+                    )
+                )
                 continue
             if row["track"] == 1:
                 track1_rows.append(row)
@@ -619,7 +838,7 @@ def build_report(xml_files: list[XmlFileInfo], analysis_year: int) -> tuple[list
             }
         )
 
-    return summary_rows, details, unique_cf_rows, global_single_heads
+    return summary_rows, details, unique_cf_rows, global_single_heads, extraction_issues
 
 
 def autosize_columns(ws) -> None:
@@ -753,6 +972,10 @@ def apply_summary_group_style(ws) -> None:
 def style_worksheet(ws, has_total_row: bool = False) -> None:
     max_row = ws.max_row
     max_col = ws.max_column
+    ws.freeze_panes = "A2"
+    ws.sheet_view.showGridLines = False
+    if max_row > 1 and max_col > 0:
+        ws.auto_filter.ref = ws.dimensions
 
     for cell in ws[1]:
         cell.font = HEADER_FONT
@@ -821,7 +1044,13 @@ def save_workbook(
     details: list[RecordDetail],
     unique_cf_rows: list[dict],
     global_single_heads: int,
+    extraction_issues: list[ExtractionIssue] | None = None,
+    validation_results: list[FileValidationResult] | None = None,
+    nonstandard_cf_records: list[NonstandardCfRecord] | None = None,
 ) -> None:
+    extraction_issues = extraction_issues or []
+    validation_results = validation_results or []
+    nonstandard_cf_records = nonstandard_cf_records or []
     wb = Workbook()
     ws_summary = wb.active
     ws_summary.title = "Report"
@@ -901,9 +1130,92 @@ def save_workbook(
         excluded_rows = []
     write_table_sheet(ws_excluded_cf, excluded_headers, excluded_rows)
 
+    ws_extraction_issues = wb.create_sheet("Scarti_estrazione")
+    extraction_headers = [
+        "File XML",
+        "Tracciato",
+        "Numero record Assistenza",
+        "CodiceASL",
+        "Id_Rec",
+        "Motivo dello scarto",
+    ]
+    extraction_rows = [
+        [
+            issue.source_file,
+            issue.track,
+            issue.record_number,
+            issue.sede,
+            issue.id_rec,
+            issue.reason,
+        ]
+        for issue in extraction_issues
+    ]
+    write_table_sheet(ws_extraction_issues, extraction_headers, extraction_rows)
+
+    ws_validation = wb.create_sheet("Validazione_XSD")
+    validation_headers = ["File XML", "Tracciato", "Esito", "Numero errori file", "Path", "Messaggio"]
+    validation_rows: list[list[object]] = []
+    for result in validation_results:
+        if result.execution_error:
+            validation_rows.append(
+                [result.source_file, result.track, result.status, "", "", result.execution_error]
+            )
+        elif result.errors:
+            for error in result.errors:
+                validation_rows.append(
+                    [
+                        result.source_file,
+                        result.track,
+                        result.status,
+                        len(result.errors),
+                        error["Path"],
+                        error["Messaggio"],
+                    ]
+                )
+        else:
+            validation_rows.append([result.source_file, result.track, result.status, 0, "", ""])
+    write_table_sheet(ws_validation, validation_headers, validation_rows)
+
+    ws_cf_check = wb.create_sheet("Verifica_CF")
+    cf_check_headers = [
+        "File XML",
+        "Tracciato",
+        "Numero record Assistenza",
+        "Id_Rec",
+        "CF finale candidato",
+        "Esito formato",
+        "Carattere controllo atteso",
+        "Carattere controllo presente",
+        "Carattere controllo valido",
+        "Estratto per i conteggi",
+    ]
+    cf_check_rows = [
+        [
+            record.source_file,
+            record.track,
+            record.record_number,
+            record.id_rec,
+            record.cf_candidate,
+            record.status,
+            record.expected_control_char,
+            record.cf_candidate[-1:] if record.cf_candidate else "",
+            "SI" if record.control_char_valid else "NO",
+            "SI" if record.extractable else "NO",
+        ]
+        for record in nonstandard_cf_records
+    ]
+    write_table_sheet(ws_cf_check, cf_check_headers, cf_check_rows)
+
     style_worksheet(ws_summary, has_total_row=bool(summary_rows))
     apply_summary_group_style(ws_summary)
-    for ws in [*detail_sheets, ws_unique_cf, ws_excluded_cf]:
+    for ws in [
+        *detail_sheets,
+        ws_unique_cf,
+        ws_excluded_cf,
+        ws_extraction_issues,
+        ws_validation,
+        ws_cf_check,
+    ]:
         style_worksheet(ws)
 
     wb.save(output_path)
@@ -1492,7 +1804,7 @@ class SiadReportApp:
         validated = self.validate_inputs()
         if validated is None:
             return
-        _, _, xml_dir, output_path, analysis_year = validated
+        track1_xsd, track2_xsd, xml_dir, output_path, analysis_year = validated
         filename_token = self.filename_token_var.get().strip()
         if not self.xml_files:
             try:
@@ -1521,17 +1833,42 @@ class SiadReportApp:
         self.start_busy_indicator()
         threading.Thread(
             target=self._generate_report_worker,
-            args=(selected_xml_files, output_path, analysis_year),
+            args=(
+                selected_xml_files,
+                output_path,
+                analysis_year,
+                {1: track1_xsd, 2: track2_xsd},
+            ),
             daemon=True,
         ).start()
 
-    def _generate_report_worker(self, xml_files: list[XmlFileInfo], output_path: Path, analysis_year: int) -> None:
+    def _generate_report_worker(
+        self,
+        xml_files: list[XmlFileInfo],
+        output_path: Path,
+        analysis_year: int,
+        xsd_by_track: dict[int, Path],
+    ) -> None:
         try:
-            summary_rows, details, unique_cf_rows, global_single_heads = build_report(xml_files, analysis_year)
+            summary_rows, details, unique_cf_rows, global_single_heads, extraction_issues = build_report(
+                xml_files,
+                analysis_year,
+            )
+            nonstandard_cf_records = collect_nonstandard_cf_records(xml_files)
+            validation_results = validate_xml_files(xml_files, xsd_by_track)
             output_path.parent.mkdir(parents=True, exist_ok=True)
             if output_path.exists():
                 output_path.unlink()
-            save_workbook(output_path, summary_rows, details, unique_cf_rows, global_single_heads)
+            save_workbook(
+                output_path,
+                summary_rows,
+                details,
+                unique_cf_rows,
+                global_single_heads,
+                extraction_issues,
+                validation_results,
+                nonstandard_cf_records,
+            )
         except Exception as exc:
             self.root.after(0, lambda: self.messagebox.showerror("Errore", str(exc)))
             self.root.after(0, lambda: self.set_status_message("Generazione report fallita."))
@@ -1539,11 +1876,37 @@ class SiadReportApp:
             return
 
         def done() -> None:
+            validation_rows = [
+                {
+                    "file_xml": result.source_file,
+                    "path": error["Path"],
+                    "messaggio": error["Messaggio"],
+                }
+                for result in validation_results
+                for error in result.errors
+            ]
+            self.populate_validation_tree(validation_rows)
             self.summary_rows = add_total_row(summary_rows, global_single_heads)
             self.populate_summary_tree(self.summary_rows)
-            self.set_status_message(f"Report creato: {output_path}", clickable_path=output_path)
+            invalid_files = sum(result.status == "NON VALIDO" for result in validation_results)
+            validation_not_run = sum(result.status == "NON ESEGUITA" for result in validation_results)
+            status_suffix = f"{invalid_files} file non validi XSD"
+            if validation_not_run:
+                status_suffix += f", {validation_not_run} validazioni non eseguite"
+            self.set_status_message(
+                f"Report creato ({status_suffix}, {len(extraction_issues)} scarti): {output_path}",
+                clickable_path=output_path,
+            )
             self.stop_busy_indicator()
-            self.messagebox.showinfo("Completato", f"Report salvato in:\n{output_path}")
+            self.messagebox.showinfo(
+                "Completato",
+                f"Report salvato in:\n{output_path}\n\n"
+                f"File con errori XSD: {invalid_files}\n"
+                f"Validazioni non eseguite: {validation_not_run}\n"
+                f"Record non estraibili: {len(extraction_issues)}\n\n"
+                f"Identificativi CF non standard verificati: {len(nonstandard_cf_records)}\n\n"
+                "Gli errori XSD sono segnalati ma non escludono automaticamente gli assistiti dai conteggi.",
+            )
 
         self.root.after(0, done)
 

@@ -737,12 +737,6 @@ def generate_report(
     Returns:
         Percorso del file generato.
     """
-    # Scarti dir default
-    if scarti_dir is None and nuovi_dir:
-        candidate = os.path.join(nuovi_dir, "scarti")
-        if os.path.isdir(candidate):
-            scarti_dir = candidate
-
     # --- Fase 1: preparazione workdir ---
     workdirs: list[str] = []
     all_collisions: list[str] = []

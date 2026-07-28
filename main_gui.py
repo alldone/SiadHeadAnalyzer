@@ -14,6 +14,7 @@ from mobilita_verticale.mobilita_gui import MobilitaGuiApp
 from siad_report_gui import SiadReportApp
 from specialistica_verticale.specialistica_gui import SpecialisticaGuiApp
 from sind_verticale.sind_gui import SindGuiApp
+from xml_validator_verticale.xml_validator_gui import XmlValidatorApp
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -49,6 +50,7 @@ class ToolSuiteApp:
         self.siad_app: SiadReportApp | None = None
         self.specialistica_app: SpecialisticaGuiApp | None = None
         self.sind_app: SindGuiApp | None = None
+        self.xml_validator_app: XmlValidatorApp | None = None
 
         self._build_ui()
 
@@ -85,7 +87,9 @@ class ToolSuiteApp:
                 ("Specialistica", self.show_specialistica),
                 ("Mobilita Farmaci", self.show_mobilita),
                 ("SIND Detenuti", self.show_sind),
+                ("XML/XSD", self.show_xml_validator),
             ],
+            max_columns=4,
         )
         self._build_ribbon_group(
             ribbon,
@@ -121,6 +125,7 @@ class ToolSuiteApp:
         self.specialistica_tab = self.ttk.Frame(self.notebook)
         self.mobilita_tab = self.ttk.Frame(self.notebook)
         self.sind_tab = self.ttk.Frame(self.notebook)
+        self.xml_validator_tab = self.ttk.Frame(self.notebook)
         self.notebook.add(self.home_tab, text="Home")
         self.notebook.add(self.siad_tab, text="SIAD")
         self.notebook.add(self.far_tab, text="FAR D33Za")
@@ -128,6 +133,7 @@ class ToolSuiteApp:
         self.notebook.add(self.specialistica_tab, text="Specialistica")
         self.notebook.add(self.mobilita_tab, text="Mobilita Farmaci")
         self.notebook.add(self.sind_tab, text="SIND Detenuti")
+        self.notebook.add(self.xml_validator_tab, text="Validatore XML/XSD")
 
         self._build_home_tab()
 
@@ -147,6 +153,7 @@ class ToolSuiteApp:
         file_menu.add_command(label="Specialistica", command=self.show_specialistica)
         file_menu.add_command(label="Mobilita Farmaci", command=self.show_mobilita)
         file_menu.add_command(label="SIND Detenuti", command=self.show_sind)
+        file_menu.add_command(label="Validatore XML/XSD", command=self.show_xml_validator)
         file_menu.add_separator()
         file_menu.add_command(label="Esci", command=self.root.destroy)
         menu.add_cascade(label="File", menu=file_menu)
@@ -158,12 +165,30 @@ class ToolSuiteApp:
 
         self.root.config(menu=menu)
 
-    def _build_ribbon_group(self, parent: Any, column: int, title: str, buttons: list[tuple[str, Any]]) -> None:
+    def _build_ribbon_group(
+        self,
+        parent: Any,
+        column: int,
+        title: str,
+        buttons: list[tuple[str, Any]],
+        *,
+        max_columns: int | None = None,
+    ) -> None:
         group = self.ttk.LabelFrame(parent, text=title, padding=10)
         group.grid(row=0, column=column, sticky="nsew", padx=(0, 8) if column < 2 else 0)
+        column_count = max_columns or max(len(buttons), 1)
         for index, (label, command) in enumerate(buttons):
+            button_row, button_column = divmod(index, column_count)
+            is_last_in_row = button_column == column_count - 1 or index == len(buttons) - 1
             button = self.ttk.Button(group, text=label, command=command)
-            button.grid(row=0, column=index, padx=(0, 8) if index < len(buttons) - 1 else 0, pady=2, ipadx=8, ipady=10)
+            button.grid(
+                row=button_row,
+                column=button_column,
+                padx=(0, 8) if not is_last_in_row else 0,
+                pady=2,
+                ipadx=8,
+                ipady=10,
+            )
 
     def _build_home_tab(self) -> None:
         self.home_tab.columnconfigure(0, weight=1)
@@ -229,6 +254,14 @@ class ToolSuiteApp:
             "Estrazione detenuti tossicodipendenti dai flussi SIND per Relazione al Parlamento.",
             self.show_sind,
         )
+        self._build_tool_card(
+            self.home_tab,
+            2,
+            0,
+            "Validatore XML/XSD",
+            "Validazione generica di un documento XML rispetto a uno schema XSD, ignorando i namespace dell'XML.",
+            self.show_xml_validator,
+        )
 
     def _build_tool_card(
         self,
@@ -279,6 +312,11 @@ class ToolSuiteApp:
         self.notebook.select(self.sind_tab)
         self.status_var.set("Verticale SIND Detenuti attivo.")
 
+    def show_xml_validator(self) -> None:
+        self._ensure_app_loaded("xml_validator")
+        self.notebook.select(self.xml_validator_tab)
+        self.status_var.set("Validatore XML/XSD attivo.")
+
     def _on_tab_changed(self, _event: Any) -> None:
         selected = self.notebook.select()
         if selected == str(self.siad_tab):
@@ -299,6 +337,9 @@ class ToolSuiteApp:
         elif selected == str(self.sind_tab):
             self._ensure_app_loaded("sind")
             self.status_var.set("Verticale SIND Detenuti attivo.")
+        elif selected == str(self.xml_validator_tab):
+            self._ensure_app_loaded("xml_validator")
+            self.status_var.set("Validatore XML/XSD attivo.")
         else:
             self.status_var.set("Home attiva.")
 
@@ -376,6 +417,18 @@ class ToolSuiteApp:
                 self.messagebox,
                 self.scrolledtext,
                 parent=self.sind_tab,
+                embed_mode=True,
+            )
+            return
+
+        if tool_name == "xml_validator" and self.xml_validator_app is None:
+            self.xml_validator_app = XmlValidatorApp(
+                self.root,
+                self.tk,
+                self.ttk,
+                self.filedialog,
+                self.messagebox,
+                parent=self.xml_validator_tab,
                 embed_mode=True,
             )
 

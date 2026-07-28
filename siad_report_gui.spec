@@ -19,6 +19,8 @@ a = Analysis(
         'specialistica_verticale.specialistica_gui',
         'specialistica_verticale.etl_bancadati',
         'specialistica_verticale.validate_output',
+        'xml_validator_verticale.xml_validator_core',
+        'xml_validator_verticale.xml_validator_gui',
     ],
     hookspath=[],
     hooksconfig={},

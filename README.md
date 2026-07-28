@@ -1,13 +1,13 @@
 # SiadHeadAnalyzer
 
-Suite desktop Python con piu verticali operative: `SIAD`, `FAR D33Za`, `Specialistica`, `Mobilita Farmaci` e `SIND Detenuti`.
+Suite desktop Python con piu verticali operative: `SIAD`, `FAR D33Za`, `FAR Recon`, `Specialistica`, `Mobilita Farmaci`, `SIND Detenuti` e `Validatore XML/XSD`.
 
 ## Verticali nel repo
 
 Il repository ospita piu verticali distinti, orchestrati da un launcher unico:
 
 - `main_gui.py`
-  launcher principale con ribbon e tab `Home`, `SIAD`, `FAR D33Za`, `Specialistica`, `Mobilita Farmaci`, `SIND Detenuti`
+  launcher principale con ribbon e tab `Home`, `SIAD`, `FAR D33Za`, `FAR Recon`, `Specialistica`, `Mobilita Farmaci`, `SIND Detenuti`, `Validatore XML/XSD`
 
 - `siad_report_gui.py`
   verticale desktop standalone `SIAD`
@@ -17,8 +17,20 @@ Il repository ospita piu verticali distinti, orchestrati da un launcher unico:
   verticale desktop standalone `Specialistica`
 - `mobilita_gui.py`
   verticale desktop standalone `Mobilita Farmaci`
+- `xml_validator_verticale/xml_validator_gui.py`
+  verticale desktop standalone `Validatore XML/XSD`
 
 I verticali separati vivono nelle rispettive cartelle dedicate e condividono solo il launcher principale.
+
+## Verticale Validatore XML/XSD
+
+Il verticale `Validatore XML/XSD` permette di selezionare liberamente uno schema `.xsd` e un documento `.xml` tramite file chooser.
+
+- lavora su una copia temporanea dell'XML e non modifica mai il file originale;
+- ignora i namespace dichiarati nell'XML, anche quando la dichiarazione non si trova letteralmente sulla prima riga;
+- se lo XSD possiede un `targetNamespace`, riallinea temporaneamente gli elementi a quello dello schema;
+- mostra progressivamente tutti gli errori in una listbox con percorso, riga quando disponibile e messaggio;
+- esegue parsing e validazione in un thread separato, mantenendo reattiva la finestra tramite la coda eventi di Tk.
 
 ## Verticale FAR D33Za
 
