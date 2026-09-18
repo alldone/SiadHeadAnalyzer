@@ -14,6 +14,7 @@ from mobilita_verticale.mobilita_gui import MobilitaGuiApp
 from siad_report_gui import SiadReportApp
 from specialistica_verticale.specialistica_gui import SpecialisticaGuiApp
 from sind_verticale.sind_gui import SindGuiApp
+from telemedicina_verticale.telemedicina_gui import TelemedicinaGuiApp
 from xml_validator_verticale.xml_validator_gui import XmlValidatorApp
 
 
@@ -50,6 +51,7 @@ class ToolSuiteApp:
         self.siad_app: SiadReportApp | None = None
         self.specialistica_app: SpecialisticaGuiApp | None = None
         self.sind_app: SindGuiApp | None = None
+        self.telemedicina_app: TelemedicinaGuiApp | None = None
         self.xml_validator_app: XmlValidatorApp | None = None
 
         self._build_ui()
@@ -87,6 +89,7 @@ class ToolSuiteApp:
                 ("Specialistica", self.show_specialistica),
                 ("Mobilita Farmaci", self.show_mobilita),
                 ("SIND Detenuti", self.show_sind),
+                ("Telemedicina PNT", self.show_telemedicina),
                 ("XML/XSD", self.show_xml_validator),
             ],
             max_columns=4,
@@ -102,6 +105,7 @@ class ToolSuiteApp:
                 ("Apri Specialistica", self.show_specialistica),
                 ("Apri Mobilita", self.show_mobilita),
                 ("Apri SIND", self.show_sind),
+                ("Apri Telemedicina", self.show_telemedicina),
             ],
         )
         self._build_ribbon_group(
@@ -125,6 +129,7 @@ class ToolSuiteApp:
         self.specialistica_tab = self.ttk.Frame(self.notebook)
         self.mobilita_tab = self.ttk.Frame(self.notebook)
         self.sind_tab = self.ttk.Frame(self.notebook)
+        self.telemedicina_tab = self.ttk.Frame(self.notebook)
         self.xml_validator_tab = self.ttk.Frame(self.notebook)
         self.notebook.add(self.home_tab, text="Home")
         self.notebook.add(self.siad_tab, text="SIAD")
@@ -133,6 +138,7 @@ class ToolSuiteApp:
         self.notebook.add(self.specialistica_tab, text="Specialistica")
         self.notebook.add(self.mobilita_tab, text="Mobilita Farmaci")
         self.notebook.add(self.sind_tab, text="SIND Detenuti")
+        self.notebook.add(self.telemedicina_tab, text="Telemedicina PNT")
         self.notebook.add(self.xml_validator_tab, text="Validatore XML/XSD")
 
         self._build_home_tab()
@@ -153,6 +159,7 @@ class ToolSuiteApp:
         file_menu.add_command(label="Specialistica", command=self.show_specialistica)
         file_menu.add_command(label="Mobilita Farmaci", command=self.show_mobilita)
         file_menu.add_command(label="SIND Detenuti", command=self.show_sind)
+        file_menu.add_command(label="Telemedicina PNT", command=self.show_telemedicina)
         file_menu.add_command(label="Validatore XML/XSD", command=self.show_xml_validator)
         file_menu.add_separator()
         file_menu.add_command(label="Esci", command=self.root.destroy)
@@ -258,6 +265,14 @@ class ToolSuiteApp:
             self.home_tab,
             2,
             0,
+            "Telemedicina PNT",
+            "Compilazione del tracciato PNT per azienda e struttura erogante, con controllo delle colonne sorgente.",
+            self.show_telemedicina,
+        )
+        self._build_tool_card(
+            self.home_tab,
+            2,
+            1,
             "Validatore XML/XSD",
             "Validazione generica di un documento XML rispetto a uno schema XSD, ignorando i namespace dell'XML.",
             self.show_xml_validator,
@@ -312,6 +327,11 @@ class ToolSuiteApp:
         self.notebook.select(self.sind_tab)
         self.status_var.set("Verticale SIND Detenuti attivo.")
 
+    def show_telemedicina(self) -> None:
+        self._ensure_app_loaded("telemedicina")
+        self.notebook.select(self.telemedicina_tab)
+        self.status_var.set("Verticale Telemedicina PNT attivo.")
+
     def show_xml_validator(self) -> None:
         self._ensure_app_loaded("xml_validator")
         self.notebook.select(self.xml_validator_tab)
@@ -337,6 +357,9 @@ class ToolSuiteApp:
         elif selected == str(self.sind_tab):
             self._ensure_app_loaded("sind")
             self.status_var.set("Verticale SIND Detenuti attivo.")
+        elif selected == str(self.telemedicina_tab):
+            self._ensure_app_loaded("telemedicina")
+            self.status_var.set("Verticale Telemedicina PNT attivo.")
         elif selected == str(self.xml_validator_tab):
             self._ensure_app_loaded("xml_validator")
             self.status_var.set("Validatore XML/XSD attivo.")
@@ -417,6 +440,19 @@ class ToolSuiteApp:
                 self.messagebox,
                 self.scrolledtext,
                 parent=self.sind_tab,
+                embed_mode=True,
+            )
+            return
+
+        if tool_name == "telemedicina" and self.telemedicina_app is None:
+            self.telemedicina_app = TelemedicinaGuiApp(
+                self.root,
+                self.tk,
+                self.ttk,
+                self.filedialog,
+                self.messagebox,
+                self.scrolledtext,
+                parent=self.telemedicina_tab,
                 embed_mode=True,
             )
             return

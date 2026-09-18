@@ -1,6 +1,6 @@
 # SiadHeadAnalyzer
 
-Suite desktop Python con piu verticali operative: `SIAD`, `FAR D33Za`, `FAR Recon`, `Specialistica`, `Mobilita Farmaci`, `SIND Detenuti` e `Validatore XML/XSD`.
+Suite desktop Python con piu verticali operative: `SIAD`, `FAR D33Za`, `FAR Recon`, `Specialistica`, `Mobilita Farmaci`, `SIND Detenuti`, `Telemedicina PNT` e `Validatore XML/XSD`.
 
 ## Verticali nel repo
 
@@ -20,7 +20,24 @@ Il repository ospita piu verticali distinti, orchestrati da un launcher unico:
 - `xml_validator_verticale/xml_validator_gui.py`
   verticale desktop standalone `Validatore XML/XSD`
 
+- `telemedicina_verticale/telemedicina_gui.py`
+  verticale desktop standalone `Telemedicina PNT`
+
 I verticali separati vivono nelle rispettive cartelle dedicate e condividono solo il launcher principale.
+
+## Verticale Telemedicina PNT
+
+Il verticale `Telemedicina PNT` seleziona tramite file chooser il file Excel sorgente e compila il modello PNT incluso nel progetto.
+
+- individua le colonne per intestazione, senza dipendere dalla loro posizione;
+- richiede solo le colonne effettivamente usate: `ID paziente`, regione di residenza, `ASL di residenza`, `fascia d'età`, `Sesso` ed `Erogante`/`Erogatore`;
+- ignora tutte le colonne sorgente aggiuntive;
+- se il file non e' conforme, elenca puntualmente le sole intestazioni mancanti e le alternative accettate;
+- aggrega i casi per azienda di assistenza (F), azienda erogante (P), fascia d'eta (E), genere (G) e struttura erogante (S);
+- verifica automaticamente che il totale prodotto in colonna H coincida con gli ID paziente valorizzati nella sorgente;
+- mantiene le traduzioni delle strutture in `telemedicina_verticale/config.json`, selezionabile anche dalla GUI.
+
+Il totale non e' cablato a `4.880`: viene calcolato ogni volta dal file selezionato e confrontato con la colonna H dell'output.
 
 ## Verticale Validatore XML/XSD
 
@@ -267,6 +284,8 @@ git push origin v1.0.0
   codice del verticale `Mobilita Farmaci`
 - `sind_verticale/`
   codice del verticale `SIND Detenuti`
+- `telemedicina_verticale/`
+  codice, configurazione e modello del verticale `Telemedicina PNT`
 - `requirements.txt`
   dipendenze runtime
 - `requirements-dev.txt`

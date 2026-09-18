@@ -12,6 +12,8 @@ a = Analysis(
         ('specialistica_verticale/FORMAT_ACQUAVIVA.xlsx', 'specialistica_verticale'),
         ('specialistica_verticale/BRANCA_Codici regionali-Codici SSN.xlsx', 'specialistica_verticale'),
         ('specialistica_verticale/NOTE_ETL_SPECIALISTICA.md', 'specialistica_verticale'),
+        ('telemedicina_verticale/config.json', 'telemedicina_verticale'),
+        ('telemedicina_verticale/Tracciato_PNT_template.xlsx', 'telemedicina_verticale'),
     ],
     hiddenimports=[
         'mobilita_verticale.mobilita_gui',
@@ -19,6 +21,8 @@ a = Analysis(
         'specialistica_verticale.specialistica_gui',
         'specialistica_verticale.etl_bancadati',
         'specialistica_verticale.validate_output',
+        'telemedicina_verticale.telemedicina_core',
+        'telemedicina_verticale.telemedicina_gui',
         'xml_validator_verticale.xml_validator_core',
         'xml_validator_verticale.xml_validator_gui',
     ],

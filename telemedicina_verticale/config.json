@@ -1,0 +1,56 @@
+{
+  "verticals": {
+    "teleconsulto_tat": {
+      "source_sheet": "3523 AL 31_08_2026_new",
+      "target_sheet": "Tracciato Prestazioni",
+      "source_columns": {
+        "patient_id": ["ID paziente"],
+        "region": ["Regione Residenza String", "Regione di residenza"],
+        "asl": ["ASL di residenza"],
+        "age": ["fascia d'età"],
+        "gender": ["Sesso"],
+        "provider": ["Erogante", "Erogatore"]
+      },
+      "lookup_sheets": {
+        "asl": "ASL",
+        "age": "Fascia d'età",
+        "gender": "Genere",
+        "structure": "Codice-descrizione Struttura"
+      },
+      "target_columns": {
+        "age": "E",
+        "assistance_asl": "F",
+        "gender": "G",
+        "quantity": "H",
+        "provider_asl": "P",
+        "structure": "S"
+      },
+      "supplemental_asl": {
+        "110302": "AZIENDA SANITARIA TERRITORIALE ANCONA",
+        "110303": "AZIENDA SANITARIA TERRITORIALE MACERATA"
+      },
+      "structure_translation": {
+        "CASTROVILLARI": {
+          "provider_asl_code": "180201",
+          "structure_code": "180006"
+        },
+        "CETRARO": {
+          "provider_asl_code": "180201",
+          "structure_code": "180012"
+        },
+        "PAOLA": {
+          "provider_asl_code": "180201",
+          "structure_code": "180012"
+        },
+        "CORIGLIANO": {
+          "provider_asl_code": "180201",
+          "structure_code": "180010"
+        },
+        "ROSSANO": {
+          "provider_asl_code": "180201",
+          "structure_code": "180010"
+        }
+      }
+    }
+  }
+}
